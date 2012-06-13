@@ -1,0 +1,41 @@
+{% load sekizai_tags %}<!DOCTYPE html>
+<html>
+<head>
+    <title> Ghoknhar - Casual Gaming</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
+    <link type="text/css" href="{{ STATIC_URL }}css/reset.css" />
+    <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
+    {% render_block "css" %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32589634-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Ghoknhar</h1>
+            <h2>Casual Gaming</h2>
+
+            <div id="social-links">
+
+            </div>
+        </div>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">
+            Copyright &copy; Robert Johnson - ghoknhar.com
+        </div>
+    </div>
+    {% render_block "js" %}
+</body>
+</html>

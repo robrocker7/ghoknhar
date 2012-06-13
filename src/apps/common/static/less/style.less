@@ -1,0 +1,47 @@
+@lighter-base: #444;
+@base: #000;
+
+#wrapper {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+
+    #header {
+        width: 100%;
+        margin-bottom: 10px;
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: @base;
+        }
+        h2 {
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            color: @lighter-base;
+        }
+
+        #social-links {
+            ul {
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    #content {
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+    
+    #footer {
+        width: 100%;
+
+    }
+}

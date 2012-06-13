@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load sekizai_tags %}
+
+{% block content %}
+<div id="faith_container">
+    <div id="faith_bar">
+        <div id="has_faith"></div>
+    </div>
+    {% if not has_voted %}
+    <div id="faith_buttons">
+        <div class="button" id="faith_me"></div>
+        <div class="button" id="no_faith_me"></div>
+    </div>
+    {% endif %}
+</div>
+{% addtoblock "js" %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var check_for_faith = 1000;
+    var faith_check_timeout = setInterval(faith_check, check_for_faith);
+
+    function faith_check() {
+        $.get('{% url faith:check_votes bar.id %}', function(json_response) {
+            if(json_response.success) {
+                var faith_count = json_response.faith_count;
+                var no_faith_count = json_response.no_faith_count;
+            }else if(!json_response.success && json_response.new_bar) {
+                window.location.reload();
+            } else {
+                alert('Hmm... Something went wrong... maybe refresh?');
+                clearInterval(faith_check_timeout);
+            }
+        });
+    }
+    {% if not has_voted %}
+    function vote(faith) {
+        $.get('{% url faith:vote bar.id %}?is='+faith, function(json_response) {
+            if(json_response.success) {
+                window.location.reload();
+            }
+        });
+    }
+
+    $('#faith_me').click(function() {
+        return vote('faith');
+    });
+
+    $('#no_faith_me').click(function() {
+        return vote('faithless');
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}
+{% endblock %}
