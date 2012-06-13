@@ -1,13 +1,16 @@
 @lighter-base: #444;
 @base: #000;
 
+.clear {
+    clear: both;
+}
 #wrapper {
     position: relative;
     width: 960px;
     margin: 0 auto;
 
     #header {
-        width: 100%;
+        width: 960px;
         margin-bottom: 10px;
 
         h1 {
@@ -35,13 +38,18 @@
     }
 
     #content {
-        width: 100%;
+        width: 960px;
         margin-bottom: 10px;
 
+        #new_bar {
+            font-size: 36px;
+            border: 1px solid #000;
+            text-align: center;
+        }
     }
     
     #footer {
-        width: 100%;
+        width: 960px;
 
     }
 }

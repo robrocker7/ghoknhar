@@ -2,6 +2,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from apps.faith.models import Vote, Bar
 from apps.common.decorators import ajax_view
@@ -52,8 +53,18 @@ def track(request):
         bar.save()
 
     has_voted = bar.has_voted(request.META['REMOTE_ADDR'])
-    print has_voted
+
     return render_to_response('faith/track.html', {
             'has_voted': has_voted,
             'bar': bar,
         }, context_instance=RequestContext(request))
+
+@login_required
+def new_bar(request):
+    if 'new' in request.GET:
+        bar = Bar()
+        bar.save()
+        return HttpResponseRedirect(reverse('faith:new'))
+
+    return render_to_response('faith/new.html', {},
+        context_instance=RequestContext(request))
