@@ -1,0 +1,38 @@
+@faithless: #CC3748;
+@faithful: #3752CC;
+
+#faith_container {
+    width: 600px;
+    padding: 10px;
+
+    #faith_bar {
+        width: 400px;
+        height: 40px;
+        background-color: @faithless;
+
+        #has_faith {
+            width: 0%;
+            height: 40px;
+            background-color: @faithful;
+            border-right: 1px solid #000;
+        }
+    }
+
+    #faith_buttons {
+        width: 600px;
+        text-align: center;
+
+        .button {
+            width: 200px;
+        }
+
+        #faith_me {
+            background-color: @faithful;
+            margin-right: 100px;
+        }
+        
+        #no_faith_me {
+            background-color: @faithless;
+        }
+    }
+}

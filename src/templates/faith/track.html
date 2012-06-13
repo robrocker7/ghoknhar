@@ -2,19 +2,11 @@
 
 {% load sekizai_tags %}
 
-{% block content %}
-<div id="faith_container">
-    <div id="faith_bar">
-        <div id="has_faith"></div>
-    </div>
-    {% if not has_voted %}
-    <div id="faith_buttons">
-        <div class="button" id="faith_me"></div>
-        <div class="button" id="no_faith_me"></div>
-    </div>
-    {% endif %}
-</div>
-{% addtoblock "js" %}
+{% block extra_css %}
+    <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/faith.less" />
+{% endblock %}
+
+{% block extra_scripts %}
 <script type="text/javascript">
 $(document).ready(function() {
     var check_for_faith = 1000;
@@ -25,6 +17,7 @@ $(document).ready(function() {
             if(json_response.success) {
                 var faith_count = json_response.faith_count;
                 var no_faith_count = json_response.no_faith_count;
+                update_faith(faith_count, no_faith_count);
             }else if(!json_response.success && json_response.new_bar) {
                 window.location.reload();
             } else {
@@ -33,24 +26,24 @@ $(document).ready(function() {
             }
         });
     }
-    {% if not has_voted %}
-    function vote(faith) {
-        $.get('{% url faith:vote bar.id %}?is='+faith, function(json_response) {
-            if(json_response.success) {
-                window.location.reload();
-            }
-        });
+    function update_faith(faith_count, no_faith_count) {
+        var percentage = Number((Number(faith_count) / Number((faith_count + no_faith_count)))) * 100;
+        $('#has_faith').css({'width': percentage+'%'});
     }
-
-    $('#faith_me').click(function() {
-        return vote('faith');
-    });
-
-    $('#no_faith_me').click(function() {
-        return vote('faithless');
-    });
-    {% endif %}
 });
 </script>
 {% endblock %}
+
+{% block content %}
+<div id="faith_container">
+    <div id="faith_bar">
+        <div id="has_faith"></div>
+    </div>
+    {% if not has_voted %}
+    <div id="faith_buttons">
+        <a class="button" id="faith_me" href="{% url faith:vote bar.id %}?is=faith">faith</a>
+        <a class="button" id="no_faith_me" href="{% url faith:vote bar.id %}?is=faithless">no faith</a>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

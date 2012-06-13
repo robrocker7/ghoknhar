@@ -14,7 +14,7 @@ class Bar(models.Model):
         return self.check_duplicate_ip(ip)
 
     def check_duplicate_ip(self, ip):
-        votes = self.vote_set.filter(ip_address=ip)
+        votes = self.votes.filter(ip_address=ip).count()
         if votes > 0:
             return True
         return False
@@ -36,7 +36,7 @@ class Bar(models.Model):
             self.votes.add(vote)
 
     def faith_count(self):
-        return self.vote_set.filter(like=True).count()
+        return self.votes.filter(like=True).count()
 
     def no_faith_count(self):
-        return self.vote_set.filter(like=False).count()
+        return self.votes.filter(like=False).count()

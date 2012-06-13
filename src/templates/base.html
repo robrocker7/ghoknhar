@@ -1,12 +1,12 @@
-{% load sekizai_tags %}<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title> Ghoknhar - Casual Gaming</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
     <link type="text/css" href="{{ STATIC_URL }}css/reset.css" />
     <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
-    {% render_block "css" %}
+    {% block extra_css %}{% endblock %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -36,6 +36,6 @@
             Copyright &copy; Robert Johnson - ghoknhar.com
         </div>
     </div>
-    {% render_block "js" %}
+    {% block extra_scripts %}{% endblock %}
 </body>
 </html>

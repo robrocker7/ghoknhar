@@ -1,29 +1,31 @@
+from django.template import RequestContext
+from django.shortcuts import render_to_response
+from django.http import Http404, HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
 from apps.faith.models import Vote, Bar
 from apps.common.decorators import ajax_view
 from apps.common.functions import json_response
 
-@ajax_view
 def vote(request, bar_id):
     try:
         bar = Bar.objects.get(id=bar_id)
     except Bar.DoesNotExist:
-        return json_response({'success': False,
-            'errors': ['no_bar']})
+        raise Http404
 
     vote = request.GET.get('is', None)
 
     if not vote:
-        return json_response({'success': False,
-            'errors': ['no_vote']})
-    
+        raise Http404
+
     ip_address = request.META['REMOTE_ADDR']
     if vote == 'faith':
         bar.has_faith(ip_address)
     if vote == 'faithless':
         bar.no_faith(ip_address)
 
-    return json_response({'success': True})
-
+    return HttpResponseRedirect(reverse('faith:track'))
+    
 @ajax_view
 def check_votes(request, bar_id):
     try:
@@ -41,3 +43,17 @@ def check_votes(request, bar_id):
     return json_response({'success': True,
         'faith_count': bar.faith_count(),
         'no_faith_count': bar.no_faith_count()})
+
+def track(request):
+    try:
+        bar = Bar.objects.latest('date_created')
+    except Bar.DoesNotExist:
+        bar = Bar()
+        bar.save()
+
+    has_voted = bar.has_voted(request.META['REMOTE_ADDR'])
+    print has_voted
+    return render_to_response('faith/track.html', {
+            'has_voted': has_voted,
+            'bar': bar,
+        }, context_instance=RequestContext(request))
