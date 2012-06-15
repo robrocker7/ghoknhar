@@ -3,10 +3,14 @@
 
 #faith_container {
     width: 680px;
-    padding: 10px;
     margin: 0 auto;
-    border: 1px solid #000;
     text-align: center;
+    position: relative;
+
+    h2 {
+        margin: 0px;
+        padding: 0px;
+    }
 
     #faith_bar {
         width: 680px;
@@ -15,27 +19,59 @@
         border-radius: 20px;
 
         #has_faith {
-            width: 0%;
+            width: 50%;
             height: 40px;
             background-color: @faithful;
-            border-right: 1px solid #000;
             border-radius: 20px;
         }
+
+    }
+
+    #faith_percent {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        width: 100px;
+        height: 25px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #no_faith_percent {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        width: 100px;
+        height: 25px;
+        font-weight: bold;
+        font-size: 20px;
     }
 
     #faith_buttons {
-        width: 600px;
+        width: 680px;
         text-align: center;
-
+        padding: 10px 0;
+        margin-top: 10px;
+        
         .button {
-            width: 200px;
+            padding: 10px 0;
+            text-transform: uppercase;
+            display: inline-block;
+            width: 80px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
         }
 
         #faith_me {
             background-color: @faithful;
-            margin-right: 100px;
         }
         
+        #faith_me.disabled, #no_faith_me.disabled {
+            background-color: #DDD;
+            color: #666;
+        }
+
         #no_faith_me {
             background-color: @faithless;
         }

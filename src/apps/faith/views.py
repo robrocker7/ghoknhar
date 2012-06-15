@@ -25,6 +25,8 @@ def vote(request, bar_id):
     if vote == 'faithless':
         bar.no_faith(ip_address)
 
+    if request.is_ajax():
+        return json_response({'success': True})
     return HttpResponseRedirect(reverse('faith:track'))
     
 @ajax_view
@@ -39,7 +41,7 @@ def check_votes(request, bar_id):
     new_bar_check = Bar.objects.latest('date_created')
     if bar.id != new_bar_check.id:
         return json_response({'success': False,
-            'new_bar': True})
+            'new_bar': True, 'bar_id': new_bar_check.id})
 
     return json_response({'success': True,
         'faith_count': bar.faith_count(),
