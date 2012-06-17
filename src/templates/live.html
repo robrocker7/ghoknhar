@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/faith.less" />
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var check_for_faith = 1000;
+    var faith_check_timeout = setInterval(faith_check, check_for_faith);
+    var bar_id = {{ bar.id }};
+    function faith_check() {
+        var url = '{% url faith:check_votes 0 %}'.replace('0', bar_id);
+        $.get(url, function(json_response) {
+            if(json_response.success) {
+                var faith_count = json_response.faith_count;
+                var no_faith_count = json_response.no_faith_count;
+                update_faith(faith_count, no_faith_count);
+            }else if(!json_response.success && json_response.new_bar) {
+                bar_id = json_response.bar_id;
+                reset_faith();
+            } else {
+                alert('Hmm... Something went wrong... maybe refresh?');
+                clearInterval(faith_check_timeout);
+            }
+        });
+    }
+
+    function update_faith(faith_count, no_faith_count) {
+        var faith_total = (faith_count + no_faith_count);
+        var percentage = Number((Number(faith_count) / Number(faith_total))) * 100;
+        var faithless_percentage = Number(100 - percentage);
+        if(percentage >= 0) {
+            $('#has_faith').css({'width': percentage+'%'});
+            $('#faith_percent').html(percentage.toFixed()+'%');
+            $('#no_faith_percent').html(faithless_percentage.toFixed()+'%');
+            $('#faith_votes span').html(faith_total);
+        }
+    }
+
+    function reset_faith() {
+        $('#has_faith').css({'width': '50%'});
+        $('#faith_percent').html('0%');
+        $('#no_faith_percent').html('0%');
+        $('#faith_buttons a').removeClass('disabled');
+        $('#faith_votes span').html('0');
+    }
+
+    $('#faith_buttons a').click(function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href').replace('0', bar_id);
+        $.get(href, function(json_response) {
+            $('#faith_buttons a').addClass('disabled');
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+    <div class="video_container">
+        <object type="application/x-shockwave-flash" height="390" width="640" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=ghoknhar" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=ghoknhar&auto_play=false&start_volume=25" /></object><a href="http://www.twitch.tv/ghoknhar#r=-rid-&amp;s=em" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;">Watch live video from ghoknhar on www.twitch.tv</a>
+    </div>
+    <div class="chat_container">
+        <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="420" width="310"></iframe>
+    </div>
+    <div class="clear"></div>
+    <div id="faith_container">
+        <h2> Have Faith? </h2>
+        <div id="faith_bar">
+            <div id="has_faith"></div>
+        </div>
+        <div id="faith_percent">0%</div>
+        <div id="no_faith_percent">0%</div>
+    
+        <div id="faith_buttons">
+            <a class="button {% if has_voted %}disabled{% endif %}" id="faith_me" href="{% url faith:vote 0 %}?is=faith">yes</a>
+            <a class="button {% if has_voted %}disabled{% endif %}" id="no_faith_me" href="{% url faith:vote 0 %}?is=faithless">no</a>
+        </div>
+        <div id="faith_votes"><span>0</span> Votes</div>
+
+    </div>
+{% endblock %}

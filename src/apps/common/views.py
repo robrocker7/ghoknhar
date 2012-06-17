@@ -16,3 +16,17 @@ def main(request):
             'has_voted': has_voted,
             'bar': bar,
         }, context_instance=RequestContext(request))
+
+def live(request):
+    try:
+        bar = Bar.objects.latest('date_created')
+    except Bar.DoesNotExist:
+        bar = Bar()
+        bar.save()
+
+    has_voted = bar.has_voted(request.META['REMOTE_ADDR'])
+
+    return render_to_response('live.html', {
+            'has_voted': has_voted,
+            'bar': bar,
+        }, context_instance=RequestContext(request))

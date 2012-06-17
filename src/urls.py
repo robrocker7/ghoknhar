@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^faith/', include('apps.faith.urls', namespace='faith')),
+    url(r'^live/$', 'apps.common.views.live', name='live'),
     url(r'^$', 'apps.common.views.main', name='index'),
 )
