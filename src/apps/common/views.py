@@ -12,7 +12,7 @@ def main(request):
 
     has_voted = bar.has_voted(request.META['REMOTE_ADDR'])
 
-    return render_to_response('index.html', {
+    return render_to_response('base.html', {
             'has_voted': has_voted,
             'bar': bar,
         }, context_instance=RequestContext(request))

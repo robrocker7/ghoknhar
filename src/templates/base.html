@@ -3,9 +3,7 @@
 <head>
     <title> Ghoknhar - Casual Gaming</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <link type="text/css" href="{{ STATIC_URL }}css/reset.css" />
     <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
-    {% block extra_css %}{% endblock %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
 <script type="text/javascript">
 
@@ -20,25 +18,90 @@
   })();
 
 </script>
+<script type="text/javascript" src="http://use.typekit.com/gsj7mke.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
-<body>
-    <div id="wrapper">
-        <div id="header">
-            <h1>Ghoknhar</h1>
-            <h2>Casual Gaming</h2>
-
-            <div id="twitch-follow">
-                <div id="twitch-frame">
-                    
-                </div>
+<body class="tk-botanika-mono-web">
+<div id="header">
+    <div class="wrapper">
+        <img src="{{ STATIC_URL }}img/ghoknhar-logo.png" alt="Ghoknhar - Casual Gaming" width="416" height="56" />
+        <img src="{{ STATIC_URL }}img/casual-gaming.png" alt="Casual Gaming" id="casual-gaming" width="232" height="24" />
+    </div>
+</div>
+<div id="video-container">
+    <div class="wrapper">
+        <div id="video-spot">
+            <object type="application/x-shockwave-flash" height="390" width="640" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=ghoknhar" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=ghoknhar&auto_play=false&start_volume=25" /></object>
+            <p class="tune-in">TUNE IN NEXT TIME: 05/26/2012 5PM</p>
+            <div class="button-link">
+                <a href="#">Subscribe +</a>
             </div>
         </div>
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
-            <p>Copyright &copy; Robert Johnson - ghoknhar.com</p>
-            <p> Source Code found at <a href="https://github.com/robrocker7/ghoknhar">Github</a> </p>
+        <div id="chat-spot">
+            <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="420" width="310"></iframe>
         </div>
+        <div class="clear"></div>
     </div>
-    {% block extra_scripts %}{% endblock %}
+</div>
+<div class="wrapper">
+    <div id="game-container">
+        <img src="{{ STATIC_URL }}img/game-icons/minecraft.png" alt="Currently Playing: Minecraft" />
+        <div class="game-name">
+            <h3>Currently Playing:</h3>
+            <h1>Minecraft</h1>
+            <div class="button-link">
+                <a href="http://www.minecraft.net/">Buy the Game</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <h2 class="tk-pragmatica-web">// Installed Mods:</h2>
+        <ul>
+            <li>Way of the Monk - Unarmed Overhaul - Part 1</li>
+            <li>Posh Mudcrabs</li>
+            <li>Drink Eat Sleep</li>
+            <li>Real Rain</li>
+            <li>Magic Scaling</li>
+            <li>Ultimate Castle Defense - BETA v1.5</li>
+            <li>Auth Unequip Arrows</li>
+            <li>Isilmeriel's LOTR Weapons</li>
+            <li>Static Mesh Improvement Mod - SMIM</li>
+            <li>RNG (Dynamic) Guards</li>
+            <li>Enhanced Blood Textures</li>
+            <li>Realistic Ragdolls and Force</li>
+            <li>Dynamic Merchants</li>
+        </ul>
+    </div>
+    <div id="site-container">
+        <h2 class="tk-pragmatica-web">// Recent News</h2>
+        <div id="recent-news">
+            <div class="article">
+                <a href="">
+                <img src="http://i2.ytimg.com/vi/AsgS5sB0tLY/default.jpg" />
+                
+                <h3>Getting scared playing Amensia! 2nd Stream - 5 / 9</h3>
+                </a>
+                <p>This is my 2nd stream of me finishing Amnesia: The Dark Descent. There are some really intense moments in the</p>
+            </div>
+            <div class="article">
+                <a href="">
+                <img src="http://i2.ytimg.com/vi/AsgS5sB0tLY/default.jpg" />
+                
+                <h3>Getting scared playing Amensia! 2nd Stream - 5 / 9</h3>
+                </a>
+                <p>This is my 2nd stream of me finishing Amnesia: The Dark Descent. There are some really intense moments in the</p>
+            </div>
+        </div>
+        <h2 class="tk-pragmatica-web">// Comp Specs</h2>
+        <ul>
+            <li>CPU: Intel Core i7-2600K Sandy Bridge 3.4GHz</li>
+            <li>GPU: ATI Radeon HD 6870</li>
+            <li>RAM: 8 GBs DDR3</li>
+            <li>HDD: 2 TBs Seagate</li>
+            <li>PSU: 900W</li>
+            <li>Mouse: <a href="https://www.amazon.com/dp/B004AM5RAM/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B004AM5RAM&adid=1JNKM864BXM8ZJVGGKXN&">Razer Naga</a></li>
+            <li>Keyboard: <a href="https://www.amazon.com/dp/B003M549A2/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B003M549A2&adid=07JT9A00XTYV06CV79WX&">Das Keyboard</a></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
