@@ -19,5 +19,35 @@
 {% block current_game %}
     {% if game %}
     {% include "partials/game.html" with game=game %}
+    {% else %}
+    <div id="game-container">
+        <img src="https://img.wsgf.org/f/u/article_logo.png" height="128" alt="Guild Wars 2" />
+        <div class="game-name">
+            <h3>Current Favorite Game:</h3>
+            <h1>Guild Wars 2</h1>
+            <div class="button-link">
+                <a href="http://www.guildwars2.com">Buy the Game</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        {% if game.mod_set.all %}
+        <h2 class="tk-pragmatica-web">// Installed Mods:</h2>
+        <ul>
+            <li>Way of the Monk - Unarmed Overhaul - Part 1</li>
+            <li>Posh Mudcrabs</li>
+            <li>Drink Eat Sleep</li>
+            <li>Real Rain</li>
+            <li>Magic Scaling</li>
+            <li>Ultimate Castle Defense - BETA v1.5</li>
+            <li>Auth Unequip Arrows</li>
+            <li>Isilmeriel's LOTR Weapons</li>
+            <li>Static Mesh Improvement Mod - SMIM</li>
+            <li>RNG (Dynamic) Guards</li>
+            <li>Enhanced Blood Textures</li>
+            <li>Realistic Ragdolls and Force</li>
+            <li>Dynamic Merchants</li>
+        </ul>
+        {% endif %}
+    </div> 
     {% endif %}
 {% endblock %}

@@ -23,7 +23,7 @@ def main(request):
 
     # get current game
     try:
-        current_game_setting = Setting.objects.get(name='game')
+        current_game_setting = Setting.objects.get(name='fav_game')
         current_game = Game.objects.get(slug=current_game_setting.value)
     except:
         current_game = None
