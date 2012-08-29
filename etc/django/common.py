@@ -130,11 +130,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'feedparser',
+
     'south',
     'sekizai',
 
     'apps.common',
     'apps.faith',
+    'apps.games',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -163,6 +166,13 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'LOCATION': '127.0.0.1:11211',
     }
 }
 

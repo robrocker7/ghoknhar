@@ -1,0 +1,29 @@
+<div id="game-container">
+    <img src="{{ STATIC_URL }}img/game-icons/minecraft.png" alt="Currently Playing: Minecraft" />
+    <div class="game-name">
+        <h3>Currently Playing:</h3>
+        <h1>{{ game.name }}</h1>
+        <div class="button-link">
+            <a href="{{ game.link }}">Buy the Game</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    {% if game.mod_set.all %}
+    <h2 class="tk-pragmatica-web">// Installed Mods:</h2>
+    <ul>
+        <li>Way of the Monk - Unarmed Overhaul - Part 1</li>
+        <li>Posh Mudcrabs</li>
+        <li>Drink Eat Sleep</li>
+        <li>Real Rain</li>
+        <li>Magic Scaling</li>
+        <li>Ultimate Castle Defense - BETA v1.5</li>
+        <li>Auth Unequip Arrows</li>
+        <li>Isilmeriel's LOTR Weapons</li>
+        <li>Static Mesh Improvement Mod - SMIM</li>
+        <li>RNG (Dynamic) Guards</li>
+        <li>Enhanced Blood Textures</li>
+        <li>Realistic Ragdolls and Force</li>
+        <li>Dynamic Merchants</li>
+    </ul>
+    {% endif %}
+</div>

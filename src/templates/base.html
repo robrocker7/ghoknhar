@@ -5,8 +5,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
     <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
+    {% block extra_css %}{% endblock %}
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-32589634-1']);
   _gaq.push(['_trackPageview']);
@@ -16,7 +16,6 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 <script type="text/javascript" src="http://use.typekit.com/gsj7mke.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -31,11 +30,7 @@
 <div id="video-container">
     <div class="wrapper">
         <div id="video-spot">
-            <object type="application/x-shockwave-flash" height="390" width="640" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=ghoknhar" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=ghoknhar&auto_play=false&start_volume=25" /></object>
-            <p class="tune-in">TUNE IN NEXT TIME: 05/26/2012 5PM</p>
-            <div class="button-link">
-                <a href="#">Subscribe +</a>
-            </div>
+            {% block video_script %}{% endblock %}
         </div>
         <div id="chat-spot">
             <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="420" width="310"></iframe>
@@ -44,53 +39,12 @@
     </div>
 </div>
 <div class="wrapper">
-    <div id="game-container">
-        <img src="{{ STATIC_URL }}img/game-icons/minecraft.png" alt="Currently Playing: Minecraft" />
-        <div class="game-name">
-            <h3>Currently Playing:</h3>
-            <h1>Minecraft</h1>
-            <div class="button-link">
-                <a href="http://www.minecraft.net/">Buy the Game</a>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <h2 class="tk-pragmatica-web">// Installed Mods:</h2>
-        <ul>
-            <li>Way of the Monk - Unarmed Overhaul - Part 1</li>
-            <li>Posh Mudcrabs</li>
-            <li>Drink Eat Sleep</li>
-            <li>Real Rain</li>
-            <li>Magic Scaling</li>
-            <li>Ultimate Castle Defense - BETA v1.5</li>
-            <li>Auth Unequip Arrows</li>
-            <li>Isilmeriel's LOTR Weapons</li>
-            <li>Static Mesh Improvement Mod - SMIM</li>
-            <li>RNG (Dynamic) Guards</li>
-            <li>Enhanced Blood Textures</li>
-            <li>Realistic Ragdolls and Force</li>
-            <li>Dynamic Merchants</li>
-        </ul>
-    </div>
+    {% block current_game %}
+    {% include "partials/game.html" %} 
+    {% endblock %}
     <div id="site-container">
-        <h2 class="tk-pragmatica-web">// Recent News</h2>
-        <div id="recent-news">
-            <div class="article">
-                <a href="">
-                <img src="http://i2.ytimg.com/vi/AsgS5sB0tLY/default.jpg" />
-                
-                <h3>Getting scared playing Amensia! 2nd Stream - 5 / 9</h3>
-                </a>
-                <p>This is my 2nd stream of me finishing Amnesia: The Dark Descent. There are some really intense moments in the</p>
-            </div>
-            <div class="article">
-                <a href="">
-                <img src="http://i2.ytimg.com/vi/AsgS5sB0tLY/default.jpg" />
-                
-                <h3>Getting scared playing Amensia! 2nd Stream - 5 / 9</h3>
-                </a>
-                <p>This is my 2nd stream of me finishing Amnesia: The Dark Descent. There are some really intense moments in the</p>
-            </div>
-        </div>
+        <h2 class="tk-pragmatica-web">// Recent Videos</h2>
+        {% include "partials/feed.html" with videos=videos %}
         <h2 class="tk-pragmatica-web">// Comp Specs</h2>
         <ul>
             <li>CPU: Intel Core i7-2600K Sandy Bridge 3.4GHz</li>
@@ -103,5 +57,16 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.article a').click(function(e){
+        e.preventDefault();
+        var href = $(this).attr('data-id');
+        var yt_embed = 'http://www.youtube.com/embed/';
+        $('#video-spot iframe').attr('src', yt_embed+href);
+    });
+});
+</script>
+{% block extra_scripts %}{% endblock %}
 </body>
 </html>

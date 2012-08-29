@@ -58,27 +58,10 @@ $(document).ready(function() {
 </script>
 {% endblock %}
 
-{% block content %}
-    <div class="video_container">
-        <object type="application/x-shockwave-flash" height="390" width="640" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=ghoknhar" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=ghoknhar&auto_play=false&start_volume=25" /></object><a href="http://www.twitch.tv/ghoknhar#r=-rid-&amp;s=em" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;">Watch live video from ghoknhar on www.twitch.tv</a>
-    </div>
-    <div class="chat_container">
-        <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="420" width="310"></iframe>
-    </div>
-    <div class="clear"></div>
-    <div id="faith_container">
-        <h2> Have Faith? </h2>
-        <div id="faith_bar">
-            <div id="has_faith"></div>
+{% block video_script %}
+        <object type="application/x-shockwave-flash" height="390" width="640" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=ghoknhar" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=ghoknhar&auto_play=false&start_volume=25" /></object>
+        <p class="tune-in">LIVE NOW</p>
+        <div class="button-link">
+            <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar">Subscribe +</a>
         </div>
-        <div id="faith_percent">0%</div>
-        <div id="no_faith_percent">0%</div>
-    
-        <div id="faith_buttons">
-            <a class="button {% if has_voted %}disabled{% endif %}" id="faith_me" href="{% url faith:vote 0 %}?is=faith">yes</a>
-            <a class="button {% if has_voted %}disabled{% endif %}" id="no_faith_me" href="{% url faith:vote 0 %}?is=faithless">no</a>
-        </div>
-        <div id="faith_votes"><span>0</span> Votes</div>
-
-    </div>
 {% endblock %}

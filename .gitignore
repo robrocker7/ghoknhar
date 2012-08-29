@@ -33,3 +33,5 @@ Thumbs.db
 etc/django/local.py
 /*.db
 
+media/*
+static/*
