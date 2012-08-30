@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}
+
+{% block video_script %}
+<img width="640" height="390" src="{{ STATIC_URL }}img/guildwars2/char-ranger-gameplay.jpg" alt="Guild Wars 2 Ranger Gameplay Hero Image"/>
+<p class="tune-in">VIDEOS DAILY: 10:00am &amp; 3:00pm CST</p>
+<div class="button-link">
+    <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar"
+        target="_blank">Subscribe +</a>
+</div>
+{% endblock %}
+
+{% block current_game %}
+    <div id="game-container">
+        <img src="{{ STATIC_URL }}img/guildwars2/GW2_Logo.jpg" height="128" alt="Guild Wars 2" />
+        <div class="game-name">
+            <h3>Gameplay Videos:</h3>
+            <h1>Guild Wars 2</h1>
+            <div class="button-link">
+                <a href="{% url gw2-index %}">View Playlists</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div> 
+{% endblock %}

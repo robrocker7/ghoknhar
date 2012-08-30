@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @blue: #2299d0;
+@purple: #9122d0;
 
 
 /************************************
@@ -89,6 +90,9 @@ strong {
             -moz-box-shadow: 0 1px 1px rgba(0,0,0,.3);
             box-shadow: 0 1px 1px rgba(0,0,0,.3);
         }
+        &.active {
+            background: @purple;
+        }
     }
 }
 
@@ -104,6 +108,12 @@ strong {
 		bottom: -23px;
 	}
 
+}
+#sub-navigation {
+    margin-top: 16px;
+    li {
+        display: inline;
+    }
 }
 #video-container {
 	background: #222 url(../img/video-bg.png) top repeat-x;

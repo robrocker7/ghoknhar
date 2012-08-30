@@ -15,9 +15,18 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
+    # playlist pages
+    url(r'^games/$', 'apps.common.views.view_wrapper',
+        {'template': 'playlists.html', 'context': {} },
+        name="playlists"),
+
     # guild wars 2 pages
-    url(r'^guild-wars-2/char-ranger-gameplay/$', 'apps.common.views.view_wrapper',
-        {'template': 'guildwars2/ranger-gameplay.html', 'context': {} }),
+    url(r'^games/guild-wars-2/$', 'apps.common.views.view_wrapper',
+        {'template': 'guildwars2/index.html', 'context': {} },
+        name="gw2-index"),
+    url(r'^games/guild-wars-2/char-ranger-gameplay/$', 'apps.common.views.view_wrapper',
+        {'template': 'guildwars2/ranger-gameplay.html', 'context': {} },
+        name='gw2-ranger'),
 
     url(r'^faith/', include('apps.faith.urls', namespace='faith')),
     url(r'^live/$', 'apps.common.views.live', name='live'),

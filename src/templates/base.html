@@ -39,6 +39,18 @@
     </div>
 </div>
 <div class="wrapper">
+    {% url index as home_url %}
+    {% url playlists as playlist_url %}
+    {% with c_page=request.META.PATH_INFO %}
+    <ul id="sub-navigation">
+        <li class="button-link"><a href="{{ home_url }}"
+            {% if c_page == home_url %}class="active"{% endif %}
+            >Home</a></li>
+        <li class="button-link"><a href="{{ playlist_url }}"
+            {% if c_page == playlist_url %}class="active"{% endif %}
+            >Playlists</a></li>
+    </ul>
+    {% endwith %}
     {% block current_game %}
     {% include "partials/game.html" %} 
     {% endblock %}
