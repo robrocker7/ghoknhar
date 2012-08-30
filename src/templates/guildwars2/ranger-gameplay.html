@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ddGallery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#gw2playlist').ddGallery({
+        captions:false,
+        thumbs:false,
+        dotNav:true,
+        dotNavNumbers:false,
+        rotate:false,
+        playlist:true,
+        stageRotateSpeed:0,
+        stagePause:500
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet/less" type="text/css" href="http://inventurous.net/ddgallery/themes/default/ddGallery.default.css" />
+{% endblock %}
+
+{% block video_script %}
+<img width="640" height="390" src="http://imgur.com/TkSDT.png" />
+<p class="tune-in">VIDEOS DAILY: 10:00am &amp; 3:00pm CST</p>
+<div class="button-link">
+    <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar">Subscribe +</a>
+</div>
+{% endblock %}
+
+{% block current_game %}
+<div id="game-container">
+    <div id="gw2playlist">
+        <a href="http://www.youtube.com/watch?v=Hee5iG3oqU8" title="Video 1"></a>
+        <a href="http://www.youtube.com/watch?v=XNBwadY_OnI" title="Video 2"></a>
+        <a href="http://www.youtube.com/watch?v=l04giuqTReY" title="Video 3"></a>
+        <a href="http://www.youtube.com/watch?v=YXT-oAO2j8E" title="Video 4"></a>
+        <a href="http://www.youtube.com/watch?v=T6KBQpu_KP4" title="Video 5"></a>
+        <a href="http://www.youtube.com/watch?v=5THwF1fHfEY" title="Video 6"></a>
+    </div>
+</div>
+{% endblock %}

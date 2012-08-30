@@ -16,6 +16,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
+    # guild wars 2 pages
+    url(r'^guild-wars-2/char-ranger-gameplay/$', 'django.views.generic.simple.direct_to_template',
+        {'template': 'guildwars2/ranger-gameplay.html'}),
+
     url(r'^faith/', include('apps.faith.urls', namespace='faith')),
     url(r'^live/$', 'apps.common.views.live', name='live'),
     url(r'^$', 'apps.common.views.main', name='index'),
