@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Ghoknhar - Casual Gaming</title>
+    <title>{% block meta_title %}Ghoknhar - Casual Gaming{% endblock %}</title>
+    {% block robots_tag %}<meta name="ROBOTS" content="ALL" />{% endblock %}
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}{% endblock %}" />
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
     <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
     {% block extra_css %}{% endblock %}
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32589634-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<script type="text/javascript" src="http://use.typekit.com/gsj7mke.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32589634-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript" src="http://use.typekit.com/gsj7mke.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body class="tk-botanika-mono-web">
 <div id="header">
@@ -33,7 +40,7 @@
             {% block video_script %}{% endblock %}
         </div>
         <div id="chat-spot">
-            <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="420" width="310"></iframe>
+            <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="422" width="310"></iframe>
         </div>
         <div class="clear"></div>
     </div>
