@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="https://raw.github.com/dan0/youtubeplaylist/master/jquery.youtubeplaylist.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.youtubeplaylist.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $(".video-list").ytplaylist({
@@ -44,10 +44,11 @@ $(document).ready(function(){
 {% endblock %}
 
 {% block video_script %}
-<img width="640" height="390" src="{{ STATIC_URL }}img/guildwars2/char-ranger-gameplay.jpg" />
+<img width="640" height="390" src="{{ STATIC_URL }}img/guildwars2/char-ranger-gameplay.jpg" alt="Guild Wars 2 Ranger Gameplay Hero Image"/>
 <p class="tune-in">VIDEOS DAILY: 10:00am &amp; 3:00pm CST</p>
 <div class="button-link">
-    <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar">Subscribe +</a>
+    <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar"
+        target="_blank">Subscribe +</a>
 </div>
 {% endblock %}
 
@@ -57,12 +58,18 @@ $(document).ready(function(){
     <div class="gw2playlist">
         <div id="ytvideo"></div>
         <ul class="video-list">
-            <li><a href="http://www.youtube.com/watch?v=Hee5iG3oqU8">Part 1</a></li>
-            <li><a href="http://www.youtube.com/watch?v=XNBwadY_OnI">Part 2</a></li>
-            <li><a href="http://www.youtube.com/watch?v=l04giuqTReY">Part 3</a></li>
-            <li><a href="http://www.youtube.com/watch?v=YXT-oAO2j8E">Part 4</a></li>
-            <li><a href="http://www.youtube.com/watch?v=T6KBQpu_KP4">Part 5</a></li>
-            <li><a href="http://www.youtube.com/watch?v=5THwF1fHfEY">Part 6</a></li>
+            <li><a href="http://www.youtube.com/watch?v=Hee5iG3oqU8"
+                title="Char Ranger Gameplay - Part 1">Part 1</a></li>
+            <li><a href="http://www.youtube.com/watch?v=XNBwadY_OnI"
+                title="Char Ranger Gameplay - Part 2">Part 2</a></li>
+            <li><a href="http://www.youtube.com/watch?v=l04giuqTReY"
+                title="Char Ranger Gameplay - Part 3">Part 3</a></li>
+            <li><a href="http://www.youtube.com/watch?v=YXT-oAO2j8E"
+                title="Char Ranger Gameplay - Part 4">Part 4</a></li>
+            <li><a href="http://www.youtube.com/watch?v=T6KBQpu_KP4"
+                title="Char Ranger Gameplay - Part 5">Part 5</a></li>
+            <li><a href="http://www.youtube.com/watch?v=5THwF1fHfEY"
+                title="Char Ranger Gameplay - Part 6">Part 6</a></li>
         </ul>
     </div>
     <div class="clear"></div>
@@ -83,34 +90,6 @@ $(document).ready(function(){
         or 2 mobs the pet did great holding aggro while I put out the DPS, however the
         damage output of the pet was rather low.
     </p>
-    <h2 class="tk-pragmatica-web">// Weapons:</h2>
-    <p><strong>Two-handed</strong></p>
-    <ul style="margin-left: 30px; list-style: circle; margin-bottom: 10px;">
-        <li>Greatsword</li>
-        <li>Longbow</li>
-        <li>Shortbow</li>
-    </ul>
-    <p><strong>Main-hand</strong></p>
-    <ul style="margin-left: 30px; list-style: circle; margin-bottom: 10px;">
-        <li>Sword</li>
-        <li>Axe</li>
-    </ul>
-    <p><strong>Main-hand</strong></p>
-    <ul style="margin-left: 30px; list-style: circle; margin-bottom: 10px;">
-        <li>Sword</li>
-        <li>Axe</li>
-    </ul>
-    <p><strong>Off-hand</strong></p>
-    <ul style="margin-left: 30px; list-style: circle; margin-bottom: 10px;">
-        <li>Dagger</li>
-        <li>Axe</li>
-        <li>Warhorn</li>
-        <li>Torch</li>
-    </ul>
-    <p><strong>Aquatic</strong></p>
-    <ul style="margin-left: 30px; list-style: circle; margin-bottom: 10px;">
-        <li>Harpoon gun</li>
-        <li>Spear</li>
-    </ul>
+    <a href="http://wiki.guildwars2.com/wiki/Ranger"> Guild Wars 2 Wiki : Ranger </a>
 </div>
 {% endblock %}
