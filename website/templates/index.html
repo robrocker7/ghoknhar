@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block meta_title %}Ghoknar Casual Gaming - Commentary &amp; Reviews{% endblock %}
+{% block meta_keywords %}Gaming, Reviews, Commentary, Ghoknhar, Twitch Streamer, Youtuber, Youtube{% endblock %}
+{% block meta_description %}Ghoknhar.com is my portal to release awesome and exciting gaming content to the community. I play many games and record them all and upload them to youtube. I also play live on twitch tv! Come check out all this awesome video game commentary and reviews!{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}
+
+{% block video_script %}
+{% with main_video=videos.0 %}
+<iframe width="640" height="390" src="http://www.youtube.com/embed/{{ main_video.id }}" frameborder="0" allowfullscreen></iframe>
+{% endwith %}
+<p class="tune-in">VIDEOS DAILY: 10:00am &amp; 3:00pm CST</p>
+<div class="button-link">
+    <a href="http://www.youtube.com/subscription_center?add_user=ghoknhar"
+        target="_blank">Subscribe +</a>
+</div>
+{% endblock %}
+
+{% block current_game %}
+    {% if game %}
+    {% include "_partials/game.html" with game=game %}
+    {% else %}
+    <div id="game-container">
+        <img src="{{ STATIC_URL }}img/guildwars2/GW2_Logo.png" height="128" alt="Guild Wars 2" />
+        <div class="game-name">
+            <h3>Featured Game:</h3>
+            <h1>Guild Wars 2</h1>
+            <div class="button-link">
+                <a href="http://www.guildwars2.com">Buy the Game</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        {% if game.mod_set.all %}
+        <h2 class="tk-pragmatica-web">// Installed Mods:</h2>
+        <ul>
+            <li>Way of the Monk - Unarmed Overhaul - Part 1</li>
+            <li>Posh Mudcrabs</li>
+            <li>Drink Eat Sleep</li>
+            <li>Real Rain</li>
+            <li>Magic Scaling</li>
+            <li>Ultimate Castle Defense - BETA v1.5</li>
+            <li>Auth Unequip Arrows</li>
+            <li>Isilmeriel's LOTR Weapons</li>
+            <li>Static Mesh Improvement Mod - SMIM</li>
+            <li>RNG (Dynamic) Guards</li>
+            <li>Enhanced Blood Textures</li>
+            <li>Realistic Ragdolls and Force</li>
+            <li>Dynamic Merchants</li>
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endblock %}
