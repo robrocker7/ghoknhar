@@ -7,8 +7,7 @@
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}vendor/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/style.less" />
     <script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
     {% block extra_css %}{% endblock %}
@@ -28,49 +27,68 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body class="tk-botanika-mono-web">
-<div id="header">
-    <div class="wrapper">
-        <img src="{{ STATIC_URL }}img/ghoknhar-logo.png" alt="Ghoknhar - Casual Gaming" width="416" height="56" />
+
+<nav class="navbar navbar-inverse" id="header">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class="navbar-brand" href="#">
         <img src="{{ STATIC_URL }}img/casual-gaming.png" alt="Casual Gaming" id="casual-gaming" width="232" height="24" />
+
+          <img src="{{ STATIC_URL }}img/ghoknhar-logo.png" alt="Ghoknhar - Casual Gaming" width="416" height="56" />
+      </a>
     </div>
-</div>
-<div id="video-container">
-    <div class="wrapper">
-        <div id="video-spot">
-            {% block video_script %}{% endblock %}
-        </div>
-        <div id="chat-spot">
-            <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=ghoknhar&amp;popout_chat=true" height="422" width="310"></iframe>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="wrapper">
-    {% url index as home_url %}
-    <ul id="sub-navigation">
-        <li class="button-link"><a href="{{ home_url }}"
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="button-link active"><a href="{{ home_url }}"
             {% if c_page == home_url %}class="active"{% endif %}
             >Home</a></li>
         <li class="button-link"><a href="{{ playlist_url }}"
             {% if c_page == playlist_url %}class="active"{% endif %}
             >Playlists</a></li>
-    </ul>
-    {% block current_game %}
-    {% include "_partials/game.html" %}
-    {% endblock %}
-    <div id="site-container">
-        <h2 class="tk-pragmatica-web">// Recent Videos</h2>
-        {% include "_partials/feed.html" with videos=videos %}
-        <h2 class="tk-pragmatica-web">// Comp Specs</h2>
-        <ul>
-            <li>CPU: Intel Core i7-2600K Sandy Bridge 3.4GHz</li>
-            <li>GPU: ATI Radeon HD 6870</li>
-            <li>RAM: 8 GBs DDR3</li>
-            <li>HDD: 2 TBs Seagate</li>
-            <li>PSU: 900W</li>
-            <li>Mouse: <a href="https://www.amazon.com/dp/B004AM5RAM/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B004AM5RAM&adid=1JNKM864BXM8ZJVGGKXN&">Razer Naga</a></li>
-            <li>Keyboard: <a href="https://www.amazon.com/dp/B003M549A2/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B003M549A2&adid=07JT9A00XTYV06CV79WX&">Das Keyboard</a></li>
-        </ul>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="container" style="padding: 40px 15px;">
+    <div id="video-container" class="row">
+        <div class="col-md-12">
+            <div id="video-spot">
+                {% block video_script %}{% endblock %}
+            </div>
+            <div id="chat-spot">
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% url index as home_url %}
+            {% block current_game %}
+            {% include "_partials/game.html" %}
+            {% endblock %}
+            <div id="site-container">
+                <h2 class="tk-pragmatica-web">// Recent Videos</h2>
+                {% include "_partials/feed.html" with videos=videos %}
+                <h2 class="tk-pragmatica-web">// Comp Specs</h2>
+                <ul>
+                    <li>CPU: Intel Core i7-2600K Sandy Bridge 3.4GHz</li>
+                    <li>GPU: ATI Radeon HD 6870</li>
+                    <li>RAM: 8 GBs DDR3</li>
+                    <li>HDD: 2 TBs Seagate</li>
+                    <li>PSU: 900W</li>
+                    <li>Mouse: <a href="https://www.amazon.com/dp/B004AM5RAM/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B004AM5RAM&adid=1JNKM864BXM8ZJVGGKXN&">Razer Naga</a></li>
+                    <li>Keyboard: <a href="https://www.amazon.com/dp/B003M549A2/ref=as_li_ss_til?tag=movtee-20&camp=0&creative=0&linkCode=as4&creativeASIN=B003M549A2&adid=07JT9A00XTYV06CV79WX&">Das Keyboard</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -83,6 +101,8 @@ $(document).ready(function(){
     });
 });
 </script>
+<script type="text/javascript" src="{{ STATIC_URL }}vendor/jquery/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}vendor/bootstrap/js/bootstrap.min.js"></script>
 {% block extra_scripts %}{% endblock %}
 </body>
 </html>
