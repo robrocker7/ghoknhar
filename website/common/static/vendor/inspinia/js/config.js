@@ -275,7 +275,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {
                             serie: true,
                             name: 'angular-chartist',
-                            files: ['/static/vendor/inspinia/js/plugins/chartist/chartist.min.js', 'css/plugins/chartist/chartist.min.css', '/static/vendor/inspinia/js/plugins/chartist/angular-chartist.min.js']
+                            files: ['/static/vendor/inspinia/js/plugins/chartist/chartist.min.js', '/static/vendor/inspinia/css/plugins/chartist/chartist.min.css', '/static/vendor/inspinia/js/plugins/chartist/angular-chartist.min.js']
                         }
                     ]);
                 }
@@ -294,7 +294,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
                         }
                     ]);
                 }
@@ -313,11 +313,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/summernote/summernote.css','css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/summernote/summernote.css','/static/vendor/inspinia/css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js']
                         },
                         {
                             name: 'summernote',
-                            files: ['css/plugins/summernote/summernote.css','css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/summernote/summernote.css','/static/vendor/inspinia/css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
                         }
                     ]);
                 }
@@ -341,7 +341,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             files: [ '/static/vendor/inspinia/js/plugins/flot/jquery.flot.js', '/static/vendor/inspinia/js/plugins/flot/jquery.flot.time.js', '/static/vendor/inspinia/js/plugins/flot/jquery.flot.tooltip.min.js', '/static/vendor/inspinia/js/plugins/flot/jquery.flot.spline.js', '/static/vendor/inspinia/js/plugins/flot/jquery.flot.resize.js', '/static/vendor/inspinia/js/plugins/flot/jquery.flot.pie.js', '/static/vendor/inspinia/js/plugins/flot/curvedLines.js', '/static/vendor/inspinia/js/plugins/flot/angular-flot.js', ]
                         },
                         {
-                            files: ['css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
                         },
                         {
                             files: ['/static/vendor/inspinia/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js', '/static/vendor/inspinia/js/plugins/jvectormap/jquery-jvectormap-2.0.2.css']
@@ -384,7 +384,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
                         }
                     ]);
                 }
@@ -402,53 +402,53 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             files: ['/static/vendor/inspinia/js/plugins/jsKnob/jquery.knob.js','/static/vendor/inspinia/js/plugins/jsKnob/angular-knob.js']
                         },
                         {
-                            files: ['css/plugins/ionRangeSlider/ion.rangeSlider.css','css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css','/static/vendor/inspinia/js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/ionRangeSlider/ion.rangeSlider.css','/static/vendor/inspinia/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css','/static/vendor/inspinia/js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
                         },
                         {
                             insertBefore: '#loadBefore',
                             name: 'localytics.directives',
-                            files: ['css/plugins/chosen/chosen.css','/static/vendor/inspinia/js/plugins/chosen/chosen.jquery.js','/static/vendor/inspinia/js/plugins/chosen/chosen.js']
+                            files: ['/static/vendor/inspinia/css/plugins/chosen/chosen.css','/static/vendor/inspinia/js/plugins/chosen/chosen.jquery.js','/static/vendor/inspinia/js/plugins/chosen/chosen.js']
                         },
                         {
                             name: 'nouislider',
-                            files: ['css/plugins/nouslider/jquery.nouislider.css','/static/vendor/inspinia/js/plugins/nouslider/jquery.nouislider.min.js','/static/vendor/inspinia/js/plugins/nouslider/angular-nouislider.js']
+                            files: ['/static/vendor/inspinia/css/plugins/nouslider/jquery.nouislider.css','/static/vendor/inspinia/js/plugins/nouslider/jquery.nouislider.min.js','/static/vendor/inspinia/js/plugins/nouslider/angular-nouislider.js']
                         },
                         {
                             name: 'datePicker',
-                            files: ['css/plugins/datapicker/angular-datapicker.css','/static/vendor/inspinia/js/plugins/datapicker/angular-datepicker.js']
+                            files: ['/static/vendor/inspinia/css/plugins/datapicker/angular-datapicker.css','/static/vendor/inspinia/js/plugins/datapicker/angular-datepicker.js']
                         },
                         {
                             files: ['/static/vendor/inspinia/js/plugins/jasny/jasny-bootstrap.min.js']
                         },
                         {
-                            files: ['css/plugins/clockpicker/clockpicker.css', '/static/vendor/inspinia/js/plugins/clockpicker/clockpicker.js']
+                            files: ['/static/vendor/inspinia/css/plugins/clockpicker/clockpicker.css', '/static/vendor/inspinia/js/plugins/clockpicker/clockpicker.js']
                         },
                         {
                             name: 'ui.switchery',
-                            files: ['css/plugins/switchery/switchery.css','/static/vendor/inspinia/js/plugins/switchery/switchery.js','/static/vendor/inspinia/js/plugins/switchery/ng-switchery.js']
+                            files: ['/static/vendor/inspinia/css/plugins/switchery/switchery.css','/static/vendor/inspinia/js/plugins/switchery/switchery.js','/static/vendor/inspinia/js/plugins/switchery/ng-switchery.js']
                         },
                         {
                             name: 'colorpicker.module',
-                            files: ['css/plugins/colorpicker/colorpicker.css','/static/vendor/inspinia/js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                            files: ['/static/vendor/inspinia/css/plugins/colorpicker/colorpicker.css','/static/vendor/inspinia/js/plugins/colorpicker/bootstrap-colorpicker-module.js']
                         },
                         {
                             name: 'ngImgCrop',
-                            files: ['/static/vendor/inspinia/js/plugins/ngImgCrop/ng-img-crop.js','css/plugins/ngImgCrop/ng-img-crop.css']
+                            files: ['/static/vendor/inspinia/js/plugins/ngImgCrop/ng-img-crop.js','/static/vendor/inspinia/css/plugins/ngImgCrop/ng-img-crop.css']
                         },
                         {
                             serie: true,
-                            files: ['/static/vendor/inspinia/js/plugins/moment/moment.min.js', '/static/vendor/inspinia/js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+                            files: ['/static/vendor/inspinia/js/plugins/moment/moment.min.js', '/static/vendor/inspinia/js/plugins/daterangepicker/daterangepicker.js', '/static/vendor/inspinia/css/plugins/daterangepicker/daterangepicker-bs3.css']
                         },
                         {
                             name: 'daterangepicker',
                             files: ['/static/vendor/inspinia/js/plugins/daterangepicker/angular-daterangepicker.js']
                         },
                         {
-                            files: ['css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
+                            files: ['/static/vendor/inspinia/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
                         },
                         {
                             name: 'ui.select',
-                            files: ['/static/vendor/inspinia/js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
+                            files: ['/static/vendor/inspinia/js/plugins/ui-select/select.min.js', '/static/vendor/inspinia/css/plugins/ui-select/select.min.css']
                         }
 
                     ]);
@@ -464,7 +464,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/steps/jquery.steps.css']
+                            files: ['/static/vendor/inspinia/css/plugins/steps/jquery.steps.css']
                         }
                     ]);
                 }
@@ -493,7 +493,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/dropzone/basic.css','css/plugins/dropzone/dropzone.css','/static/vendor/inspinia/js/plugins/dropzone/dropzone.js']
+                            files: ['/static/vendor/inspinia/css/plugins/dropzone/basic.css','/static/vendor/inspinia/css/plugins/dropzone/dropzone.css','/static/vendor/inspinia/js/plugins/dropzone/dropzone.js']
                         }
                     ]);
                 }
@@ -508,7 +508,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             name: 'summernote',
-                            files: ['css/plugins/summernote/summernote.css','css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/summernote/summernote.css','/static/vendor/inspinia/css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
                         }
                     ]);
                 }
@@ -572,7 +572,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             insertBefore: '#loadBefore',
-                            files: ['css/plugins/fullcalendar/fullcalendar.css','/static/vendor/inspinia/js/plugins/fullcalendar/fullcalendar.min.js','/static/vendor/inspinia/js/plugins/fullcalendar/gcal.js']
+                            files: ['/static/vendor/inspinia/css/plugins/fullcalendar/fullcalendar.css','/static/vendor/inspinia/js/plugins/fullcalendar/fullcalendar.min.js','/static/vendor/inspinia/js/plugins/fullcalendar/gcal.js']
                         },
                         {
                             name: 'ui.calendar',
@@ -785,7 +785,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             serie: true,
-                            files: ['css/plugins/codemirror/codemirror.css','css/plugins/codemirror/ambiance.css','/static/vendor/inspinia/js/plugins/codemirror/codemirror.js','/static/vendor/inspinia/js/plugins/codemirror/mode/javascript/javascript.js']
+                            files: ['/static/vendor/inspinia/css/plugins/codemirror/codemirror.css','/static/vendor/inspinia/css/plugins/codemirror/ambiance.css','/static/vendor/inspinia/js/plugins/codemirror/codemirror.js','/static/vendor/inspinia/js/plugins/codemirror/mode/javascript/javascript.js']
                         },
                         {
                             name: 'ui.codemirror',
@@ -814,7 +814,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             name: 'ui.tree',
-                            files: ['css/plugins/uiTree/angular-ui-tree.min.css','/static/vendor/inspinia/js/plugins/uiTree/angular-ui-tree.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/uiTree/angular-ui-tree.min.css','/static/vendor/inspinia/js/plugins/uiTree/angular-ui-tree.min.js']
                         },
                     ]);
                 }
@@ -829,7 +829,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             name: 'cgNotify',
-                            files: ['css/plugins/angular-notify/angular-notify.min.css','/static/vendor/inspinia/js/plugins/angular-notify/angular-notify.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/angular-notify/angular-notify.min.css','/static/vendor/inspinia/js/plugins/angular-notify/angular-notify.min.js']
                         }
                     ]);
                 }
@@ -876,7 +876,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['/static/vendor/inspinia/js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            files: ['/static/vendor/inspinia/js/plugins/sweetalert/sweetalert.min.js', '/static/vendor/inspinia/css/plugins/sweetalert/sweetalert.css']
                         },
                         {
                             name: 'oitozero.ngSweetAlert',
@@ -895,7 +895,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             name: 'cgNotify',
-                            files: ['css/plugins/angular-notify/angular-notify.min.css','/static/vendor/inspinia/js/plugins/angular-notify/angular-notify.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/angular-notify/angular-notify.min.css','/static/vendor/inspinia/js/plugins/angular-notify/angular-notify.min.js']
                         }
                     ]);
                 }
@@ -968,7 +968,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {
                             insertBefore: '#loadBefore',
                             name: 'toaster',
-                            files: ['/static/vendor/inspinia/js/plugins/toastr/toastr.min.js', 'css/plugins/toastr/toastr.min.css']
+                            files: ['/static/vendor/inspinia/js/plugins/toastr/toastr.min.js', '/static/vendor/inspinia/css/plugins/toastr/toastr.min.css']
                         }
                     ]);
                 }
@@ -991,7 +991,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             files: ['/static/vendor/inspinia/js/plugins/peity/jquery.peity.min.js', '/static/vendor/inspinia/js/plugins/peity/angular-peity.js']
                         },
                         {
-                            files: ['css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/iCheck/custom.css','/static/vendor/inspinia/js/plugins/iCheck/icheck.min.js']
                         }
                     ]);
                 }
@@ -1006,7 +1006,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     return $ocLazyLoad.load([
                         {
                             serie: true,
-                            files: ['/static/vendor/inspinia/js/plugins/dataTables/jquery.dataTables.js','css/plugins/dataTables/dataTables.bootstrap.css']
+                            files: ['/static/vendor/inspinia/js/plugins/dataTables/jquery.dataTables.js','/static/vendor/inspinia/css/plugins/dataTables/dataTables.bootstrap.css']
                         },
                         {
                             serie: true,
@@ -1028,7 +1028,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['/static/vendor/inspinia/js/plugins/footable/footable.all.min.js', 'css/plugins/footable/footable.core.css']
+                            files: ['/static/vendor/inspinia/js/plugins/footable/footable.all.min.js', '/static/vendor/inspinia/css/plugins/footable/footable.core.css']
                         },
                         {
                             name: 'ui.footable',
@@ -1065,7 +1065,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['/static/vendor/inspinia/js/plugins/footable/footable.all.min.js', 'css/plugins/footable/footable.core.css']
+                            files: ['/static/vendor/inspinia/js/plugins/footable/footable.all.min.js', '/static/vendor/inspinia/css/plugins/footable/footable.core.css']
                         },
                         {
                             name: 'ui.footable',
@@ -1098,11 +1098,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/summernote/summernote.css','css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/summernote/summernote.css','/static/vendor/inspinia/css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js']
                         },
                         {
                             name: 'summernote',
-                            files: ['css/plugins/summernote/summernote.css','css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/summernote/summernote.css','/static/vendor/inspinia/css/plugins/summernote/summernote-bs3.css','/static/vendor/inspinia/js/plugins/summernote/summernote.min.js','/static/vendor/inspinia/js/plugins/summernote/angular-summernote.min.js']
                         }
                     ]);
                 }
@@ -1117,7 +1117,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/slick/slick.css','css/plugins/slick/slick-theme.css','/static/vendor/inspinia/js/plugins/slick/slick.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/slick/slick.css','/static/vendor/inspinia/css/plugins/slick/slick-theme.css','/static/vendor/inspinia/js/plugins/slick/slick.min.js']
                         },
                         {
                             name: 'slick',
@@ -1145,7 +1145,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['/static/vendor/inspinia/js/plugins/blueimp/jquery.blueimp-gallery.min.js','css/plugins/blueimp/css/blueimp-gallery.min.css']
+                            files: ['/static/vendor/inspinia/js/plugins/blueimp/jquery.blueimp-gallery.min.js','/static/vendor/inspinia/css/plugins/blueimp/css/blueimp-gallery.min.css']
                         }
                     ]);
                 }
@@ -1164,7 +1164,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
-                            files: ['css/plugins/slick/slick.css','css/plugins/slick/slick-theme.css','/static/vendor/inspinia/js/plugins/slick/slick.min.js']
+                            files: ['/static/vendor/inspinia/css/plugins/slick/slick.css','/static/vendor/inspinia/css/plugins/slick/slick-theme.css','/static/vendor/inspinia/js/plugins/slick/slick.min.js']
                         },
                         {
                             name: 'slick',
