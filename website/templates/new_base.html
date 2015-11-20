@@ -34,7 +34,7 @@
 <body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
 {% endverbatim %}
 <!-- Main view  -->
-<div ui-view></div>
+<div ui-view>{% block content %}{% endblock %}</div>
 
 <!-- jQuery and Bootstrap -->
 <script src="{{ STATIC_URL }}vendor/inspinia/js/jquery/jquery-2.1.1.min.js"></script>
@@ -68,14 +68,15 @@
  https://developers.google.com/maps/documentation/javascript/tutorial#api_key
  After your sign up replace the key in the URL below..
 -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script> -->
 
+{% block angularjs %}
 <!-- Anglar App Script -->
 <script src="{{ STATIC_URL }}vendor/inspinia/js/app.js"></script>
 <script src="{{ STATIC_URL }}vendor/inspinia/js/config.js"></script>
 <script src="{{ STATIC_URL }}vendor/inspinia/js/translations.js"></script>
 <script src="{{ STATIC_URL }}vendor/inspinia/js/directives.js"></script>
 <script src="{{ STATIC_URL }}vendor/inspinia/js/controllers.js"></script>
-
+{% endblock %}
 </body>
 </html>
