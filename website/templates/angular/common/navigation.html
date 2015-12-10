@@ -1,3 +1,4 @@
+{% load common_tags %}
 {% verbatim %}
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
@@ -5,25 +6,31 @@
             <li class="nav-header">
 
                 <div class="dropdown profile-element" dropdown>
-                    <img alt="image" class="img-circle" src="/static/vendor/inspinia/img/profile_small.jpg"/>
+                    <img alt="image" class="img-circle" src="http://www.gravatar.com/avatar/{{ request.user.email|md5 }}" />
                     <a class="dropdown-toggle" dropdown-toggle href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">David Williams</strong>
-                             </span>
-                                <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+{% endverbatim %}
+                                    <strong class="font-bold">
+                                    {{ request.user.first_name }} {{ request.user.last_name }}
+                                    </strong>
+                                </span>
+                                <span class="text-muted text-xs block">{{ request.user.email }} <b class="caret"></b></span>
                             </span>
+{% verbatim %}
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a ui-sref="profile">Profile</a></li>
                         <li><a ui-sref="contacts">Contacts</a></li>
                         <li><a ui-sref="inbox">Mailbox</a></li>
                         <li class="divider"></li>
-                        <li><a href="../login.html">Logout</a></li>
+{% endverbatim %}
+                        <li><a href="{% url 'common:logout' %}">Logout</a></li>
+{% verbatim %}
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    GN
                 </div>
             </li>
             <li ng-class="{active: $state.includes('dashboards')}">

@@ -1,0 +1,1809 @@
+{
+"controller": {
+"data": {}
+},
+"devices": {
+"1": {},
+"3": {
+"data": {
+"value": null,
+"type": "empty",
+"basicType": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1449458021
+},
+"genericType": {
+"value": 16,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1449458021
+},
+"specificType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1449458021
+},
+"infoProtocolSpecific": {
+"value": 13802496,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"deviceTypeString": {
+"value": "Binary Power Switch",
+"type": "string",
+"invalidateTime": 1433375905,
+"updateTime": 1449458021
+},
+"isVirtual": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"isListening": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"isRouting": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"isAwake": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448560
+},
+"optional": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"isFailed": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"beam": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"sensor250": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"sensor1000": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"neighbours": {
+"value": [
+1,
+4
+],
+"type": "binary",
+"invalidateTime": 1433375905,
+"updateTime": 1449448608
+},
+"manufacturerId": {
+"value": 134,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"vendorString": {
+"value": "Aeon Labs",
+"type": "string",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"manufacturerProductType": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"manufacturerProductId": {
+"value": 6,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"ZWLib": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"ZWProtocolMajor": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"ZWProtocolMinor": {
+"value": 78,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"SDK": {
+"value": "5.02 pl3",
+"type": "string",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"applicationMajor": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"applicationMinor": {
+"value": 43,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"nodeInfoFrame": {
+"value": [
+37,
+49,
+50,
+39,
+112,
+133,
+114,
+134,
+239,
+130
+],
+"type": "binary",
+"invalidateTime": 1433375905,
+"updateTime": 1449458021
+},
+"ZDDXMLFile": {
+"value": "410-0086-0003-0006-03-02-4e-01-2b.xml",
+"type": "string",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"lastSend": {
+"value": 5462672,
+"type": "int",
+"invalidateTime": 1449448232,
+"updateTime": 1449504120
+},
+"lastNonceGet": {
+"value": 30936,
+"type": "int",
+"invalidateTime": 1449448232,
+"updateTime": 1449448560
+},
+"lastReceived": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1449504120
+},
+"failureCount": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448232,
+"updateTime": 1449448233
+},
+"keepAwake": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1449448234
+},
+"countSuccess": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"countFailed": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"queueLength": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"givenName": {
+"value": "Master Bedroom: Dresser Lamp",
+"type": "string",
+"invalidateTime": 1433375905,
+"updateTime": 1449448817
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"instances": {
+"0": {
+"data": {
+"value": null,
+"type": "empty",
+"dynamic": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"genericType": {
+"value": 16,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"specificType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"commandClasses": {
+"32": {
+"name": "Basic",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375908,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375906
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"level": {
+"value": 255,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375906
+}
+},
+"37": {
+"name": "SwitchBinary",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375909
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"level": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449504119,
+"updateTime": 1449504120
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"39": {
+"name": "SwitchAll",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375909
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"mode": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"onOff": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"49": {
+"name": "SensorMultilevel",
+"data": {
+"4": {
+"value": null,
+"type": "empty",
+"sensorTypeString": {
+"value": "Power",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"val": {
+"value": 0,
+"type": "float",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"deviceScale": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"scale": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"scaleString": {
+"value": "W",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375909
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"typemask": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"50": {
+"name": "Meter",
+"data": {
+"0": {
+"value": null,
+"type": "empty",
+"sensorType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"sensorTypeString": {
+"value": "Electric ",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"val": {
+"value": 3.159,
+"type": "float",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"scale": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"scaleString": {
+"value": "kWh",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"ratetype": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"delta": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"previous": {
+"value": 0,
+"type": "float",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"invalidateTime": 1449449015,
+"updateTime": 1449449016
+},
+"2": {
+"value": null,
+"type": "empty",
+"sensorType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"sensorTypeString": {
+"value": "Electric ",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"val": {
+"value": 11.227,
+"type": "float",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"scale": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"scaleString": {
+"value": "W",
+"type": "string",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"ratetype": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"delta": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"previous": {
+"value": 0,
+"type": "float",
+"invalidateTime": 1433375908,
+"updateTime": 1449449016
+},
+"invalidateTime": 1449449015,
+"updateTime": 1449449016
+},
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375911
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"resettable": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375909
+},
+"scalemask": {
+"value": 5,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375909
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"112": {
+"name": "Configuration",
+"data": {
+"1": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"size": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"2": {
+"value": null,
+"type": "empty",
+"val": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"size": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"80": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"size": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375909
+},
+"90": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"91": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 50,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"92": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 10,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"100": {
+"value": null,
+"type": "empty",
+"val": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"size": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"101": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"102": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"103": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"110": {
+"value": null,
+"type": "empty",
+"val": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"size": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"111": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 10,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"112": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 10,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375910
+},
+"113": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 10,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"size": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"254": {
+"value": null,
+"type": "empty",
+"val": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"size": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"255": {
+"value": null,
+"type": "empty",
+"val": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"size": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"114": {
+"name": "ManufacturerSpecific",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375908,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"vendorId": {
+"value": 134,
+"type": "int",
+"invalidateTime": 1433375907,
+"updateTime": 1433375908
+},
+"vendor": {
+"value": "Aeon Labs",
+"type": "string",
+"invalidateTime": 1433375907,
+"updateTime": 1433375908
+},
+"productId": {
+"value": 6,
+"type": "int",
+"invalidateTime": 1433375907,
+"updateTime": 1433375908
+},
+"productType": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1433375907,
+"updateTime": 1433375908
+},
+"invalidateTime": 1433375908,
+"updateTime": 1433375906
+}
+},
+"133": {
+"name": "Association",
+"data": {
+"1": {
+"value": null,
+"type": "empty",
+"max": {
+"value": 5,
+"type": "int",
+"invalidateTime": 1433375910,
+"updateTime": 1433375911
+},
+"nodes": {
+"value": [],
+"type": "binary",
+"invalidateTime": 1433375910,
+"updateTime": 1433375911
+},
+"invalidateTime": 1433375910,
+"updateTime": 1433375911
+},
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375911
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375908
+},
+"groups": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375908,
+"updateTime": 1433375911
+},
+"specificGroup": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+}
+},
+"134": {
+"name": "Version",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1433375905,
+"updateTime": 1433375907
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1433375905,
+"updateTime": 1433375906
+},
+"ZWLib": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"ZWProtocolMajor": {
+"value": 2,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"ZWProtocolMinor": {
+"value": 78,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"SDK": {
+"value": "5.02 pl3",
+"type": "string",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"applicationMajor": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"applicationMinor": {
+"value": 43,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"hardwareVersion": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"firmwareCount": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+},
+"invalidateTime": 1433375906,
+"updateTime": 1433375907
+}
+}
+}
+}
+}
+},
+"4": {
+"data": {
+"value": null,
+"type": "empty",
+"basicType": {
+"value": 4,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"genericType": {
+"value": 17,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"specificType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"infoProtocolSpecific": {
+"value": 13868032,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"deviceTypeString": {
+"value": "Routing Multilevel Switch",
+"type": "string",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"isVirtual": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"isListening": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"isRouting": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"isAwake": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"optional": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"isFailed": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"beam": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"sensor250": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"sensor1000": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"neighbours": {
+"value": [
+1,
+3
+],
+"type": "binary",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"manufacturerId": {
+"value": 99,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"vendorString": {
+"value": "",
+"type": "string",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"manufacturerProductType": {
+"value": 17495,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"manufacturerProductId": {
+"value": 12848,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"ZWLib": {
+"value": 6,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"ZWProtocolMajor": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"ZWProtocolMinor": {
+"value": 40,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"SDK": {
+"value": "4.54.00",
+"type": "string",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"applicationMajor": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"applicationMinor": {
+"value": 29,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448609
+},
+"nodeInfoFrame": {
+"value": [
+38,
+39,
+112,
+134,
+114
+],
+"type": "binary",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"ZDDXMLFile": {
+"value": "",
+"type": "string",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"lastSend": {
+"value": 5291285,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449502367
+},
+"lastNonceGet": {
+"value": 35632,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448608
+},
+"lastReceived": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449518936
+},
+"failureCount": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"keepAwake": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448610
+},
+"countSuccess": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"countFailed": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"queueLength": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"givenName": {
+"value": "Master Bath: Sink Lights",
+"type": "string",
+"invalidateTime": 1449448606,
+"updateTime": 1449448639
+},
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"instances": {
+"0": {
+"data": {
+"value": null,
+"type": "empty",
+"dynamic": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"genericType": {
+"value": 17,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"specificType": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"invalidateTime": 1449448606,
+"updateTime": 1449448607
+},
+"commandClasses": {
+"32": {
+"name": "Basic",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448610,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448610,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"level": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448609,
+"updateTime": 1449448610
+},
+"invalidateTime": 1449448610,
+"updateTime": 1449448608
+}
+},
+"38": {
+"name": "SwitchMultilevel",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"level": {
+"value": 32,
+"type": "int",
+"invalidateTime": 1449502366,
+"updateTime": 1449502367
+},
+"startChange": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"stopChange": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+}
+},
+"39": {
+"name": "SwitchAll",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"mode": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448609,
+"updateTime": 1449448610
+},
+"onOff": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+}
+},
+"112": {
+"name": "Configuration",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448610
+},
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+}
+},
+"114": {
+"name": "ManufacturerSpecific",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448609,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448609,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448609
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448609
+},
+"vendorId": {
+"value": 99,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"vendor": {
+"value": "",
+"type": "string",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"productId": {
+"value": 12848,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"productType": {
+"value": 17495,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"invalidateTime": 1449448609,
+"updateTime": 1449448608
+}
+},
+"134": {
+"name": "Version",
+"data": {
+"value": null,
+"type": "empty",
+"supported": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"version": {
+"value": 1,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"security": {
+"value": false,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"interviewDone": {
+"value": true,
+"type": "bool",
+"invalidateTime": 1449448607,
+"updateTime": 1449448609
+},
+"interviewCounter": {
+"value": 9,
+"type": "int",
+"invalidateTime": 1449448607,
+"updateTime": 1449448608
+},
+"ZWLib": {
+"value": 6,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"ZWProtocolMajor": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"ZWProtocolMinor": {
+"value": 40,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"SDK": {
+"value": "4.54.00",
+"type": "string",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"applicationMajor": {
+"value": 3,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"applicationMinor": {
+"value": 29,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"hardwareVersion": {
+"value": null,
+"type": "empty",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"firmwareCount": {
+"value": 0,
+"type": "int",
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+},
+"invalidateTime": 1449448608,
+"updateTime": 1449448609
+}
+}
+}
+}
+}
+}
+},
+"updateTime": 1449526113
+}

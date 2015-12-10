@@ -1,4 +1,5 @@
 from django import template
+import hashlib
 
 register = template.Library()
 
@@ -7,3 +8,12 @@ def is_select(field):
     if field is None:
         return False
     return field.field.widget.__class__.__name__ == 'Select'
+
+
+@register.filter(name='md5')
+def md5(text):
+    if text is None:
+        return False
+    m = hashlib.md5()
+    m.update(text)
+    return m.hexdigest()

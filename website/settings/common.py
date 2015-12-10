@@ -24,6 +24,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # THIRD PARTY
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    # APPS
+    'website.api',
     'website.common',
 )
 
@@ -66,6 +72,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
 
 LANGUAGE_CODE = 'en-us'

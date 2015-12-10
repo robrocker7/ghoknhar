@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 
 from .forms import LoginForm
@@ -10,6 +10,11 @@ from .forms import LoginForm
 def home(request):
     """ Home page of Dashboard. """
     return render(request, 'new_base.html', {})
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('common:login'))
 
 
 def login_view(request):
