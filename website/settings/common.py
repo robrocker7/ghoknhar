@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     # APPS
     'website.api',
     'website.common',
+    'website.zwave',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,4 +1,7 @@
-{% extends "new_base.html" %}
+{% extends "base.html" %}
+{% block body_attrs %}class="no-sidebar"{% endblock %}
+{% block side_navigation %}{% endblock %}
+{% block header_navigation %}{% endblock %}
 {% block content %}
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
@@ -22,9 +25,4 @@
         <p class="m-t"> <small>Johnson Family &copy; 2015</small> </p>
     </div>
 </div>
-{% endblock %}
-{% block angularjs %}
-<script>
-$('body').addClass('gray-bg');
-</script>
 {% endblock %}

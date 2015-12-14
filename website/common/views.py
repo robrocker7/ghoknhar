@@ -9,7 +9,7 @@ from .forms import LoginForm
 # @login_required
 def home(request):
     """ Home page of Dashboard. """
-    return render(request, 'new_base.html', {})
+    return render(request, 'index.html', {})
 
 
 def logout_view(request):
@@ -34,7 +34,3 @@ def login_view(request):
             'form': form,
         })
 
-
-def angular_view_loader(request, template_name):
-    """ Return HTML for Angular View. """
-    return render(request, 'angular/{0}.html'.format(template_name), {})

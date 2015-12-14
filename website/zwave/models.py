@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from .constants import DEVICE_TYPES
 """
 NOTES:
@@ -27,3 +26,5 @@ class Device(models.Model):
     def sync_with_device(self):
         pass
 
+    def __unicode__(self):
+        return '{0} -> Active: {1}'.format(self.name, self.active)
