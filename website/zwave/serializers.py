@@ -9,5 +9,4 @@ class DeviceSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'name',
                   'active',
-                  'device_type',
                   'device_id',)

@@ -95,6 +95,11 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/login/'
 
+ZWAVE_SETTINGS = {
+    'DOMAIN': '192.168.1.73',
+    'PORT': 8083
+}
+
 try:
     from .local import *
 except ImportError:

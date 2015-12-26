@@ -28,3 +28,8 @@ Local splunk instance to store events
 Building Room objects
 Build cron style events for automation
 Build ITET (if then else then) trees for interacting with NEST and other non-zwave controllers.
+
+
+# Idea Tracker
+Add contact info for house contractors
+Bill management and reporting?

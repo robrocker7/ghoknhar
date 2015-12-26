@@ -1,0 +1,29 @@
+<ul class="list-unstyled list-inline">
+    <li ng-repeat="device in devices" ng-class="{active:device.selected}">
+        <div class="ibox">
+            <div class="ibox-content product-box">
+
+                <div class="product-imitation" style="padding: 0;">
+                    <button class="btn btn-lg btn-info btn-block" style="padding: 90px 0;" ng-click="switchToggle(device, $event)">
+                        Activate
+                    </button>
+                </div>
+                <div class="product-desc">
+
+                    <span class="product-price">
+                        $10
+                    </span>
+                    <small class="text-muted">Category</small>
+                    <a href="#" class="product-name"> {{device.name}}</a>
+
+                    <div class="small m-t-xs">
+                        Many desktop publishing packages and web page editors now.
+                    </div>
+                    <div class="m-t text-righ">
+                        <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
