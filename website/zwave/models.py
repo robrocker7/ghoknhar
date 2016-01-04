@@ -67,7 +67,11 @@ class DeviceManager(models.Manager):
         con = ZWaveController(ip=settings.ZWAVE_SETTINGS['DOMAIN'],
                               port=settings.ZWAVE_SETTINGS['PORT'])
 
+        device_ids = []
         for did, device in con.devices.iteritems():
+            if did == "1":  # skip device 1 (Controller)
+                continue
+            device_ids.append(did)
             # TODO: check if device exists here and change logic
             # but for now we're going to dump everythign and rewrite it
             p_devices, p_instances, p_classes = Device.prepare_from_zwave_device(
@@ -75,6 +79,14 @@ class DeviceManager(models.Manager):
             devices.append(p_devices)
             instances += p_instances
             command_classes += p_classes
+
+        # Get Device IDs that exist in the system
+        existant_ids = Device.objects.filter(
+            device_id__in=device_ids).values_list('device_id', flat=True)
+
+        bulk_devices = []
+        bulk_instances = []
+        bulk_command_classes = []
 
         Instance.objects.all().delete()
         Device.objects.all().delete()
@@ -159,7 +171,9 @@ class Instance(models.Model):
 
     @property
     def command_class_set(self):
-        return CommandClass.objects.filter(instance_id=self.instance_id)
+        return CommandClass.objects.filter(instance_id=self.instance_id,
+                                           device_id=self.device_id,
+                                           command_class_id__in=["37", "50", "38"])
 
     @classmethod
     def prepare_from_zwave_instance(cls, iid, did, instance):
@@ -185,6 +199,7 @@ class CommandClass(models.Model):
                                         choices=COMMAND_CHOICES)
 
     raw_data = models.TextField(blank=True, null=True)
+    value = models.IntegerField(blank=True, null=True)
 
     @classmethod
     def prepare_from_zwave_classes(cls, classes, did, iid):
@@ -194,7 +209,7 @@ class CommandClass(models.Model):
             c = CommandClass(device_id=did,
                              instance_id=iid,
                              command_class_id=ccid,
-                             raw_data=json.dumps(ccdata))
+                             raw_data=json.dumps(ccdata['data']))
             result.append(c)
         return result
 
@@ -215,5 +230,6 @@ class CommandClass(models.Model):
 def device_post_save(sender, **kwargs):
     cc = kwargs['instance']
     con = ZWaveController(ip=settings.ZWAVE_SETTINGS['DOMAIN'],
-                          port=settings.ZWAVE_SETTINGS['PORT'])
+                          port=settings.ZWAVE_SETTINGS['PORT'],
+                          fetch_data=False)
     con.run_command(cc.device_id, cc.instance_id, cc.command_class_id, cc.value)

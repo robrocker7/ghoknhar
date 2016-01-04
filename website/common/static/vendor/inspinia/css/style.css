@@ -951,7 +951,7 @@ fieldset[disabled] .btn-white.active {
   height: 90px;
   font-size: 42px;
 }
-button.dim {
+.dim {
   display: inline-block;
   color: #fff;
   text-decoration: none;
@@ -965,46 +965,46 @@ button.dim {
   font-weight: 600;
   margin-bottom: 20px !important;
 }
-button.dim:active {
+.dim:active {
   top: 3px;
 }
-button.btn-primary.dim {
+.btn-primary.dim {
   box-shadow: inset 0px 0px 0px #16987e, 0px 5px 0px 0px #16987e, 0px 10px 5px #999999;
 }
-button.btn-primary.dim:active {
+.btn-primary.dim:active {
   box-shadow: inset 0px 0px 0px #16987e, 0px 2px 0px 0px #16987e, 0px 5px 3px #999999;
 }
-button.btn-default.dim {
+.btn-default.dim {
   box-shadow: inset 0px 0px 0px #b3b3b3, 0px 5px 0px 0px #b3b3b3, 0px 10px 5px #999999;
 }
-button.btn-default.dim:active {
+.btn-default.dim:active {
   box-shadow: inset 0px 0px 0px #b3b3b3, 0px 2px 0px 0px #b3b3b3, 0px 5px 3px #999999;
 }
-button.btn-warning.dim {
+.btn-warning.dim {
   box-shadow: inset 0px 0px 0px #f79d3c, 0px 5px 0px 0px #f79d3c, 0px 10px 5px #999999;
 }
-button.btn-warning.dim:active {
+.btn-warning.dim:active {
   box-shadow: inset 0px 0px 0px #f79d3c, 0px 2px 0px 0px #f79d3c, 0px 5px 3px #999999;
 }
-button.btn-info.dim {
+.btn-info.dim {
   box-shadow: inset 0px 0px 0px #1eacae, 0px 5px 0px 0px #1eacae, 0px 10px 5px #999999;
 }
-button.btn-info.dim:active {
+.btn-info.dim:active {
   box-shadow: inset 0px 0px 0px #1eacae, 0px 2px 0px 0px #1eacae, 0px 5px 3px #999999;
 }
-button.btn-success.dim {
+.btn-success.dim {
   box-shadow: inset 0px 0px 0px #1872ab, 0px 5px 0px 0px #1872ab, 0px 10px 5px #999999;
 }
-button.btn-success.dim:active {
+.btn-success.dim:active {
   box-shadow: inset 0px 0px 0px #1872ab, 0px 2px 0px 0px #1872ab, 0px 5px 3px #999999;
 }
-button.btn-danger.dim {
+.btn-danger.dim {
   box-shadow: inset 0px 0px 0px #ea394c, 0px 5px 0px 0px #ea394c, 0px 10px 5px #999999;
 }
-button.btn-danger.dim:active {
+.btn-danger.dim:active {
   box-shadow: inset 0px 0px 0px #ea394c, 0px 2px 0px 0px #ea394c, 0px 5px 3px #999999;
 }
-button.dim:before {
+.dim:before {
   font-size: 50px;
   line-height: 1em;
   font-weight: normal;
@@ -1012,7 +1012,7 @@ button.dim:before {
   display: block;
   padding-top: 10px;
 }
-button.dim:active:before {
+.dim:active:before {
   top: 7px;
   font-size: 50px;
 }

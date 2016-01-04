@@ -1,6 +1,12 @@
 from django.conf.urls import patterns, url, include
 from website.settings import DEBUG, STATIC_ROOT, MEDIA_ROOT
+from rest_framework.urlpatterns import format_suffix_patterns
 
+from .api import AuthView
+
+restpatterns = [
+    url(r'^api/auth/$', AuthView.as_view()),
+]
 
 urlpatterns = patterns('website.common.views',
     url(r'^login/$', 'login_view', name='login'),
@@ -10,6 +16,7 @@ urlpatterns = patterns('website.common.views',
     url(r'^$', 'home', name='home'),
 )
 
+urlpatterns += format_suffix_patterns(restpatterns)
 
 if DEBUG:
     urlpatterns += patterns('',

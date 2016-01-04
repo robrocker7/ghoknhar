@@ -1,0 +1,23 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="loginCtrl">
+    <div>
+        <div>
+            <h1 class="logo-name">GN</h1>
+        </div>
+        <h3>Ghoknhar Network</h3>
+        <p>Login to utilize the assets available on the network.</p>
+        <form class="m-t" role="form" action="" id="id_auth_form" ng-submit="login($event)">
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input type="text" ng-model="username" name="username" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type="password" ng-model="password" name="password" />
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <a ui-sref="forgot_password"><small>Forgot password?</small></a>
+        </form>
+        <p class="m-t"> <small>Johnson Family &copy; 2015</small> </p>
+    </div>
+</div>
