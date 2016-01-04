@@ -21,15 +21,15 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
             url: "/index",
             templateUrl: "views/common/content.html",
         })
-        .state('index.main', {
+        .state('index.switches', {
             url: "/main",
             templateUrl: "views/main.html",
-            data: { pageTitle: 'Example view' }
+            data: { pageTitle: 'Ghoknhar Network Switches' }
         })
-        .state('index.minor', {
+        .state('index.meters', {
             url: "/minor",
             templateUrl: "views/minor.html",
-            data: { pageTitle: 'Example view' }
+            data: { pageTitle: 'Ghoknhar Network Meters' }
         })
         .state('login', {
             url: "/login",
@@ -53,7 +53,6 @@ angular
     .run(['$rootScope', '$state', '$location', 'Auth', function($rootScope, $state, $location, Auth) {
         $rootScope.$state = $state;
         $rootScope.$watch(Auth.isLoggedIn, function (value, oldValue) {
-
             if((!value && oldValue) || (!value && !oldValue)) {
               console.log("Disconnect");
               $location.path('/login');
@@ -61,6 +60,6 @@ angular
               console.log("Connect");
               $location.path('/index');
             }
-
+            $rootScope.user = Auth.getUser();
         }, true);
     }]);

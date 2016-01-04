@@ -6,12 +6,8 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($scope, $location, ZWaveDevice, ZWaveCommandClass, Auth) {
+function MainCtrl($rootScope, $scope, $location, ZWaveDevice, ZWaveCommandClass, Auth) {
 
-
-    this.userName = 'Example user';
-    this.helloText = 'Welcome in SeedProject';
-    this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
 
 };
 
@@ -55,5 +51,5 @@ function LoginCtrl($scope, $location, api, Auth) {
 
 angular
     .module('inspinia')
-    .controller('MainCtrl', ['$scope', '$location', 'ZWaveDevice', 'ZWaveCommandClass', 'Auth', MainCtrl])
+    .controller('MainCtrl', ['$rootScope', '$scope', '$location', 'ZWaveDevice', 'ZWaveCommandClass', 'Auth', MainCtrl])
     .controller('loginCtrl', [ '$scope', '$location', 'api', 'Auth', LoginCtrl]);

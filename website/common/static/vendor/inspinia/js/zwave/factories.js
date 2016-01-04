@@ -48,6 +48,9 @@ angular.module('inspinia')
             setUser : function(aUser){
                 user = aUser;
             },
+            getUser: function() {
+                return user;
+            },
             isLoggedIn : function() {
                 if(!user && !initCheck) {
                     api.auth.get(function(response) {
