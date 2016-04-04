@@ -1,7 +1,7 @@
 import json
 import logging
 from croniter import croniter
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.utils import timezone
 from django.db import models
@@ -88,11 +88,13 @@ class MonitorFrequency(models.Model):
     def valid_crons():
         """ Return crons for current minute. """
         now = timezone.localtime(timezone.now())
-        now = datetime(now.year, now.month, now.day, now.hour, now.minute)
+        now = datetime(now.year, now.month, now.day, now.hour, now.minute+1)
         results = []
         for freq in MonitorFrequency.objects.all():
             icron = croniter(freq.cron_string, now)
-            if icron.get_current(datetime) == now:
+            print icron.get_current(datetime)
+            print (now - timedelta(minutes=1))
+            if icron.get_prev(datetime) == (now - timedelta(minutes=1)):
                 results.append(freq.place_monitor)
         return results
 
