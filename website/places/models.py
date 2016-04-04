@@ -40,7 +40,7 @@ class PlaceMonitor(models.Model):
 
     alert_threshold = models.IntegerField(null=True, blank=True,
                                           help_text='seconds')
-    phone_number = models.IntegerField(default='5125224361')
+    phone_number = models.IntegerField(default=5125224361)
 
     @property
     def latest_result_readable(self):
