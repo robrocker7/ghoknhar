@@ -92,9 +92,8 @@ class MonitorFrequency(models.Model):
         results = []
         for freq in MonitorFrequency.objects.all():
             icron = croniter(freq.cron_string, now)
-            print icron.get_current(datetime)
-            print (now - timedelta(minutes=1))
-            if icron.get_prev(datetime) == (now - timedelta(minutes=1)):
+            prev = icron.get_prev(datetime)
+            if prev == (now - timedelta(minutes=1)):
                 results.append(freq.place_monitor)
         return results
 
