@@ -34,3 +34,4 @@ etc/django/local.py
 
 media/*
 static/*
+*local.py

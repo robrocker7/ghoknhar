@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'website.api',
     'website.common',
     'website.zwave',
+    'website.places',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,7 +83,7 @@ REST_FRAMEWORK = {
 }
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -100,8 +101,58 @@ ZWAVE_SETTINGS = {
     'PORT': 8083
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+        # 'django.server': {
+        #     '()': 'django.utils.log.ServerFormatter',
+        #     'format': '[%(server_time)s] %(message)s',
+        # }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        # 'django.server': {
+        #     'level': 'INFO',
+        #     'class': 'logging.StreamHandler',
+        #     'formatter': 'django.server',
+        # },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        # 'django.server': {
+        #     'handlers': ['django.server'],
+        #     'level': 'INFO',
+        #     'propagate': False,
+        # }
+    }
+}
+
 try:
     from .local import *
 except ImportError:
     print 'Failed to Import Local settings'
+
 
