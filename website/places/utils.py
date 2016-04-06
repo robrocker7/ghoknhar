@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 
 
-def fetch_directions_from_google(start, end, avoidance=None, arrival_time=None, departure_time=None):
+def fetch_directions_from_google(start, end, avoidance=None, arrival_time=None, departure_time='now'):
     google_url = 'https://maps.googleapis.com/maps/api/directions/json'
     params = {
         'origin': start.address,
