@@ -1,0 +1,77 @@
+{% load staticfiles %}<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ghoknhar - RasPi Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static "raspi/vendor/flipclock/flipclock.css" %}">
+        <link rel="stylesheet" href="{% static "raspi/css/global.css" %}">
+        <link rel="stylesheet" href="{% static "raspi/vendor/bootstrap/superhero.css" %}">
+    </head>
+    <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Ghoknhar</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Test</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <div class="clock" style="margin:2em;"></div>
+            <div id="weather"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "raspi/js/global.js" %}">
+    <script src="{% static "raspi/vendor/flipclock/flipclock.min.js" %}"></script>
+    <script src="{% static "raspi/vendor/simpleweather/jquery.simpleWeather.min.js" %}"></script>
+
+    <script type="text/javascript">
+        var clock;
+        function getWeather() {
+          $.simpleWeather({
+            location: '78641',
+            unit: 'f',
+            success: function(weather) {
+              html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+              html += '<span class="label label-default">'+weather.city+', '+weather.region+'</span>';
+
+              $("#weather").html(html);
+            },
+            error: function(error) {
+              $("#weather").html('<p>'+error+'</p>');
+            }
+          });
+        }
+
+        $(document).ready(function() {
+            clock = $('.clock').FlipClock({
+                clockFace: 'TwelveHourClock',
+                showSeconds: false
+            });
+            getWeather(); //Get the initial weather.
+            setInterval(getWeather, 600000); //Update the weather every 10 minutes.
+        });
+    </script>
+    </body>
+</html>

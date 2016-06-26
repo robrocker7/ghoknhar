@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'website.common',
     'website.zwave',
     'website.places',
+    'website.raspi',
 )
 
 MIDDLEWARE_CLASSES = (
