@@ -31,11 +31,12 @@
     </div>
     <div class="container">
 
-      <div class="page-header" id="banner">
+      <div class="page-header" id="banner" style="margin-top: 8px;">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
-            <div class="clock" style="margin:2em;"></div>
             <div id="weather"></div>
+            <div class="clock"></div>
+
           </div>
         </div>
       </div>
@@ -53,8 +54,11 @@
             location: '78641',
             unit: 'f',
             success: function(weather) {
-              html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-              html += '<span class="label label-default">'+weather.city+', '+weather.region+'</span>';
+              html = '<div style="position: absolute; color: #28394A; z-index: -2; top: -8px; left: 24px; font-size: 36px;">'+weather.city+', '+weather.region+'</div>';
+              html += '<ul class="list-inline text-left">';
+              html += '<li><small><strong>'+weather.temp+'&deg;'+weather.units.temp+'<i class="icon-'+weather.code+'" style="font-size:18px; margin-left: 8px;"></i></strong></small></li>';
+              html += '<li><span class="label label-default">'+ weather.currently +'</span></li>';
+              html += '</ul>';
 
               $("#weather").html(html);
             },
