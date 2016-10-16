@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+            {% for switch in switches %}
+                <li class="ghok-switch list-group-item {% if switch.active %}active{% endif %}" data-switch-id="{{ switch.id }}">
+                    <span class="badge">{{ switch.device_id }}</span>
+                    {{ switch.name }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        $('.ghok-switch').on('updateSwitch', function(e, id, active) {
+            var elem = $('.ghok-switch[data-switch-id="'+id+'"]');
+            console.log(active);
+            if(active) {
+                elem.addClass('active');
+            } else {
+                elem.removeClass('active');
+            }
+        });
+
+        // Note that the path doesn't matter right now; any WebSocket
+        // connection gets bumped over to WebSocket consumers
+        socket = new WebSocket("ws://" + window.location.host + "/zwave/");
+        socket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            $('.ghok-switch').trigger('updateSwitch', [data.id, data.active]);
+        }
+        // Call onopen directly if socket is already open
+        if (socket.readyState == WebSocket.OPEN) socket.onopen();
+    });
+    </script>
+{% endblock %}

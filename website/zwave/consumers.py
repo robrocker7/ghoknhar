@@ -5,11 +5,10 @@ from channels import Channel, Group
 from website.zwave.models import Switch
 
 
-def ws_message(message):
-    try:
-        zwave_event = json.loads(message.content['text'])
-    except ValueError:
-        return
+def ws_add(message):
+    Group("zwave").add(message.reply_channel)
+    print "client connect"
 
-    print zwave_event
-    Switch.create_from_zwave_event(zwave_event)
+def ws_disconnect(message):
+    Group("zwave").discard(message.reply_channel)
+    print "client disconnect"

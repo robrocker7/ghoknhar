@@ -1,14 +1,15 @@
 # In routing.py
 from channels.routing import route, include
 
-from website.zwave.consumers import ws_message
+from website.zwave.consumers import ws_add, ws_disconnect
 
 # http_routing = [
 #     route("http.request", poll_consumer, path=r"^/poll/$", method=r"^POST$"),
 # ]
 
 chat_routing = [
-    route("websocket.receive", ws_message),
+    route("websocket.connect", ws_add),
+    route("websocket.disconnect", ws_disconnect)
 ]
 
 channel_routing = [
