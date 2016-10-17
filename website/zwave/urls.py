@@ -4,6 +4,6 @@ from website.zwave.views import SwitchViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'zwave', SwitchViewSet)
+router.register(r'zwave', SwitchViewSet, 'zwave')
 
 urlpatterns = router.urls

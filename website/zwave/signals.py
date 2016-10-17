@@ -10,7 +10,7 @@ def send_update(sender, instance, **kwargs):
     print "object updated"
     Group("zwave").send({
         "text": json.dumps({
-            "id": instance.id,
+            "id": instance.device_id,
             "active": instance.active
         })
     })

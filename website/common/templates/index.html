@@ -7,14 +7,14 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <ul class="list-group">
+        <div class="list-group">
             {% for switch in switches %}
-                <li class="ghok-switch list-group-item {% if switch.active %}active{% endif %}" data-switch-id="{{ switch.id }}">
+                <button class="ghok-switch list-group-item {% if switch.active %}active{% endif %}" data-switch-id="{{ switch.device_id }}">
                     <span class="badge">{{ switch.device_id }}</span>
                     {{ switch.name }}
-                </li>
+                </button>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -24,6 +24,25 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
+        $('.ghok-switch').on('toggleSwitch', function(e) {
+            var id = $(this).attr('data-switch-id');
+            var active = $(this).hasClass('active');
+            $.ajax({
+                url:'{% url "zwave:zwave-updater" %}?format=json',
+                method: "PUT",
+                data: JSON.stringify({
+                    device_id: id,
+                    types: {
+                        switch: {
+                            active: !active
+                        }
+                    }
+                }),
+                contentType:'application/json',
+                dataType: 'json'
+            });
+        });
+
         $('.ghok-switch').on('updateSwitch', function(e, id, active) {
             var elem = $('.ghok-switch[data-switch-id="'+id+'"]');
             console.log(active);
@@ -32,6 +51,11 @@
             } else {
                 elem.removeClass('active');
             }
+        });
+
+        $('.ghok-switch').on('click', function(e) {
+            e.preventDefault();
+            $(this).trigger('toggleSwitch');
         });
 
         // Note that the path doesn't matter right now; any WebSocket
