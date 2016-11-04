@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'website.common',
+    'website.chat',
     'website.zwave',
     'channels',
 ]

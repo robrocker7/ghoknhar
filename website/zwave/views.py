@@ -4,15 +4,11 @@ from rest_framework import viewsets
 from rest_framework.generics import UpdateAPIView
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication
 
 from website.zwave.serializers import SwitchSerializer
 from website.zwave.models import Switch
+from website.common.views import CsrfExemptSessionAuthentication
 
-class CsrfExemptSessionAuthentication(SessionAuthentication):
-
-    def enforce_csrf(self, request):
-        return  # To not perform the csrf check previously happening
 
 class SwitchViewSet(viewsets.ModelViewSet):
     queryset = Switch.objects.all()

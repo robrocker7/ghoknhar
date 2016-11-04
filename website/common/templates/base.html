@@ -54,11 +54,18 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 main">
-          {% block content %}{% endblock %}
+        <div class="row">
+            <div class="col-md-12 main">
+                <div class="row">
+                    <div class="col-md-8">
+                    {% block content %}{% endblock %}
+                    </div>
+                    <div class="col-md-4">
+                        {% include "_partials/chat_box.html" %}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -66,6 +73,42 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var mObj = $('<div class="media"><div class="media-left"><a href="#"><img src="http://placehold.it/35x35" class="media-object"></a></div><div class="media-body"><div class="media-heading"></div></div></div>');
+        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        var chatsock = new WebSocket(ws_scheme + '://'+window.location.host+'/chat/general');
+
+        function append_message(data) {
+            var o = mObj.clone();
+            o.find(".media-body").text(data.message);
+            o.find(".media-heading").text(data.username);
+            $('#message_container').append(o);
+        }
+        chatsock.onmessage = function(message) {
+            var data = JSON.parse(message.data);
+            append_message(data);
+        };
+        $('#message_send').on('click', function(event) {
+            var message = {
+                username: 'Robert',
+                message: $('#message_input').val(),
+            }
+            chatsock.send(JSON.stringify(message));
+            return false;
+        });
+        // load initial messages
+        $.get('/api/chat/room/general/?format=json')
+            .done(function(json_response) {
+                if(json_response['success']) {
+                    $.each(json_response['messages'], function(i) {
+                        append_message(this);
+                    });
+                }
+            });
+
+    });
+</script>
     {% block extra_scripts %}{% endblock %}
   </body>
 </html>

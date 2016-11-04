@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('website.zwave.urls', namespace='zwave')),
+    url(r'^api/', include('website.chat.urls', namespace='chat')),
     url(r'^', include('website.common.urls', namespace='common')),
 ]
