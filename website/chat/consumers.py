@@ -20,12 +20,16 @@ def ws_connect(message):
 @channel_session
 def ws_receive(message):
     slug = message.channel_session['room']
-    print 'Message Get: {0}'.format(slug)
     room = Room.objects.get(slug=slug)
     data = json.loads(message['text'])
-    m = room.messages.create(username=data['username'], message=data['message'])
-    ms = MessageSerializer(m)
-    Group('chat-'+slug).send({'text': json.dumps(ms.data)})
+    if data['event'] == "connected":
+        message.channel_session['username'] = data['username']
+    elif data['event'] == "message":
+        username = message.channel_session.get('username')
+        if username is not None:
+            m = room.messages.create(username=username, message=data['message'])
+            ms = MessageSerializer(m)
+            Group('chat-'+slug).send({'text': json.dumps(ms.data)})
 
 # Connected to websocket.disconnect
 @enforce_ordering(slight=True)
