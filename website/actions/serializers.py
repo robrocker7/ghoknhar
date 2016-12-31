@@ -1,3 +1,4 @@
+import json
 from rest_framework import serializers
 
 class GoogleActionStatusSerializer(serializers.Serializer):
@@ -13,6 +14,11 @@ class GoogleActionFulfillmentSerializer(serializers.Serializer):
     speech = serializers.CharField()
     messages = GoogleActionFulfillmentMessageSerializer(many=True)
 
+class GoogleActionMetaSerializer(serializers.Serializer):
+    intendId = serializers.UUIDField()
+    webhookUsed = serializers.CharField()
+    webhookForSlotFillingUsed = serializers.CharField()
+    intentName = serializers.CharField()
 
 class GoogleActionResultSerializer(serializers.Serializer):
     source = serializers.CharField()
@@ -23,7 +29,7 @@ class GoogleActionResultSerializer(serializers.Serializer):
     contexts = serializers.CharField()
     fulfillment = serializers.CharField()
     score = serializers.CharField()
-    metadata = serializers.CharField()
+    metadata = GoogleActionMetaSerializer()
 
 class GoogleActionResponseSerializer(serializers.Serializer):
     id = serializers.UUIDField()
@@ -33,11 +39,15 @@ class GoogleActionResponseSerializer(serializers.Serializer):
     result = GoogleActionResultSerializer()
 
     def add_text_response(self, text):
-        message = GoogleActionFulfillmentMessageSerializer(
-            speech=text)
-        fulfillment = GoogleActionFulfillmentSerializer(
-            speech=text, messages=[message,])
-        self.result.fulfillment=fulfillment
+        result = self.data['result']
+        result['fulfillment'] = {
+            'speech': text,
+            'messages': [{
+                'type': 0,
+                'speech': text
+            }]
+        }
+        self.data['result'] = result
 
 
 class GoogleActionRequestSerializer(serializers.Serializer):
