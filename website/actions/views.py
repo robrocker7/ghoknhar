@@ -25,9 +25,8 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 'success': True
             })
 
-        result = request.data
-        response = GoogleActionResponseSerializer(result)
+        response = GoogleActionResponseSerializer()
         response.add_text_response('I will add that day to your Work Schedule')
 
         print json.dumps(response.data)
-        return Response(json.dumps(response.data))
+        return Response(response.data)

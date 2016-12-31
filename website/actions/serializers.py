@@ -25,29 +25,24 @@ class GoogleActionResultSerializer(serializers.Serializer):
     resolvedQuery = serializers.CharField()
     action = serializers.CharField()
     actionIncomplete = serializers.CharField()
-    parameters = serializers.CharField()
+    parameters = serializers.JSONField()
     contexts = serializers.CharField()
     fulfillment = serializers.CharField()
     score = serializers.CharField()
     metadata = GoogleActionMetaSerializer()
 
 class GoogleActionResponseSerializer(serializers.Serializer):
-    id = serializers.UUIDField()
-    timestamp = serializers.CharField()
-    status = GoogleActionStatusSerializer()
-    sessionId = serializers.UUIDField()
-    result = GoogleActionResultSerializer()
+    speech = serializers.CharField()
+    displayText = serializers.CharField()
+    data = serializers.JSONField()
+    contextOut = serializers.JSONField(many=True)
+    source = "Johnson Castillo"
 
     def add_text_response(self, text):
-        result = self.data['result']
-        result['fulfillment'] = {
-            'speech': text,
-            'messages': [{
-                'type': 0,
-                'speech': text
-            }]
-        }
-        self.data['result'] = result
+        result = self.data
+        result['speech'] = text
+        result['displayText'] = text
+        self.data = result
 
 
 class GoogleActionRequestSerializer(serializers.Serializer):
