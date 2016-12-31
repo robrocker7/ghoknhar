@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('website.zwave.urls', namespace='zwave')),
     url(r'^api/', include('website.chat.urls', namespace='chat')),
+    url(r'^api/', include('website.actions.urls', namespace='actions')),
     url(r'^', include('website.common.urls', namespace='common')),
 ]

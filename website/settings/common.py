@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'website.common',
     'website.chat',
     'website.zwave',
+    'website.actions',
     'channels',
 ]
 
