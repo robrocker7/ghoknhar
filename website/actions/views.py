@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import list_route, detail_route
 from django.template.loader import get_template
 
-from .serializers import GoogleActionResponseSerializer, GoogleActionResultSerializer
+from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
 
 class ActionsViewSet(viewsets.GenericViewSet):
     serializer_class = GoogleActionResultSerializer
@@ -18,7 +18,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
     @list_route(methods=['POST'])
     def actions(self, request):
         try:
-            result = GoogleActionResultSerializer(request.data)
+            result = GoogleActionRequestSerializer(request.data)
         except Exception as e:
             print str(e)
             return Response({
