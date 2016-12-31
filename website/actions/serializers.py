@@ -23,7 +23,7 @@ class GoogleActionResponseSerializer(serializers.Serializer):
     result = GoogleActionResultSerializer()
 
 
-class GoogleActionResultSerializer(serializers.Serializer):
+class GoogleActionRequestSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     timestamp = serializers.CharField()
     status = GoogleActionStatusSerializer()
