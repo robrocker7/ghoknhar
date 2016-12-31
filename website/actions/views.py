@@ -11,7 +11,7 @@ from django.template.loader import get_template
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
 
 class ActionsViewSet(viewsets.GenericViewSet):
-    serializer_class = GoogleActionResultSerializer
+    serializer_class = GoogleActionResponseSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
@@ -28,6 +28,6 @@ class ActionsViewSet(viewsets.GenericViewSet):
         result = request.data
         response = GoogleActionResponseSerializer(result)
         response.add_text_response('I will add that day to your Work Schedule')
-    
+
         print json.dumps(response.data)
         return Response(json.dumps(response.data))
