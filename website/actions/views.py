@@ -25,20 +25,9 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 'success': True
             })
 
-        response = GoogleActionResponseSerializer()
-        response.id = result.id
-        response.timestamp = result.timestamp
-        response.status = result.status
-        response.sessionId = result.sessionId
-        response_result = result.result
-        response_result.fulfillment = json.dumps({
-            'speech': 'I will add that day to your Work Schedule',
-            'messages': [{
-                'type': 0,
-                'speech': 'I will add that day to your Work Schedule'
-            }]
-        })
-        response.result = response_result
-        print response.data
+        result = request.data
+        response = GoogleActionResponseSerializer(result)
+        response.add_text_response('I will add that day to your Work Schedule')
+    
         print json.dumps(response.data)
-        return Response(response.data)
+        return Response(json.dumps(response.data))
