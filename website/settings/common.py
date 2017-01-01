@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'website.zwave',
     'website.actions',
     'channels',
+
+    'oauth2client.contrib.django_util',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = ''
+
+try:
+    from local_settings import *
+except ImportError:
+    print('Failed to import local_settings')

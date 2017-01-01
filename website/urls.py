@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import oauth2client.contrib.django_util.site as django_util_site
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('website.zwave.urls', namespace='zwave')),
     url(r'^api/', include('website.chat.urls', namespace='chat')),
     url(r'^api/', include('website.actions.urls', namespace='actions')),
+    url(r'^oauth2/', include(django_util_site.urls)),
     url(r'^', include('website.common.urls', namespace='common')),
 ]

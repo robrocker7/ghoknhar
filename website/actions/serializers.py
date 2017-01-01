@@ -15,7 +15,7 @@ class GoogleActionFulfillmentSerializer(serializers.Serializer):
     messages = GoogleActionFulfillmentMessageSerializer(many=True)
 
 class GoogleActionMetaSerializer(serializers.Serializer):
-    intendId = serializers.UUIDField()
+    intentId = serializers.UUIDField()
     webhookUsed = serializers.CharField()
     webhookForSlotFillingUsed = serializers.CharField()
     intentName = serializers.CharField()
@@ -26,8 +26,8 @@ class GoogleActionResultSerializer(serializers.Serializer):
     action = serializers.CharField()
     actionIncomplete = serializers.CharField()
     parameters = serializers.JSONField()
-    contexts = serializers.CharField()
-    fulfillment = serializers.CharField()
+    contexts = serializers.JSONField()
+    fulfillment = serializers.JSONField()
     score = serializers.CharField()
     metadata = GoogleActionMetaSerializer()
 
@@ -35,15 +35,8 @@ class GoogleActionResponseSerializer(serializers.Serializer):
     speech = serializers.CharField()
     displayText = serializers.CharField()
     data = serializers.JSONField()
-    contextOut = serializers.JSONField(many=True)
+    contextOut = serializers.JSONField()
     source = "Johnson Castillo"
-
-    def add_text_response(self, text):
-        result = self.data
-        result['speech'] = text
-        result['displayText'] = text
-        self.data = result
-
 
 class GoogleActionRequestSerializer(serializers.Serializer):
     id = serializers.UUIDField()
