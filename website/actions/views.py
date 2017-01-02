@@ -1,5 +1,6 @@
 import json
 from hashlib import sha1
+import httplib2
 
 from django.template.loader import get_template
 from django.contrib.auth.decorators import login_required
@@ -13,6 +14,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import list_route, detail_route
 
 from oauth2client.contrib.django_util import decorators
+from oauth2client.client import AccessTokenCredentials
+from social_django.models import UserSocialAuth
 
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
 
@@ -38,7 +41,6 @@ class ActionsViewSet(viewsets.GenericViewSet):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-    @decorators.oauth_enabled(scopes=['https://www.googleapis.com/auth/calendar',])
     @list_route(methods=['POST'])
     def actions(self, request):
         try:
@@ -72,8 +74,14 @@ class ActionsViewSet(viewsets.GenericViewSet):
             ],
           },
         }
+        u = UserSocialAuth.objects.get(uid='robrocker7@gmail.com',
+                                       provider='google-oauth2')
+        credentials = AccessTokenCredentials(u.extra_data['access_token'],
+            'JohnsonCastillo/1.0')
+        http = httplib2.Http()
+        http = credentials.authorize(http)
 
-        resp, content = request.oauth.http.request(
+        resp, content = http.request(
             'https://www.googleapis.com/calendar/v3/calendars/mmdelascu@gmail.com/events',
             method='POST',
             body=json.dumps(event),
