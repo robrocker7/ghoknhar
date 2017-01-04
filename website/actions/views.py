@@ -103,11 +103,11 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 }]
             }
 
-
-        ActionLog.objects.create(transaction_id=result.id,
-                                 session_id=result.sessionId,
-                                 date_created=parser.parse(result.timestamp),
-                                 status_code=result.status.code,
+        result_data = result.data
+        ActionLog.objects.create(transaction_id=result_data['id'],
+                                 session_id=result_data['sessionId'],
+                                 date_created=parser.parse(result_data['timestamp']),
+                                 status_code=result_data['status.code'],
                                  fulfillment_payload=json.dumps(response),
                                  action_payload=json.dumps(request.data))
         return Response(response)
