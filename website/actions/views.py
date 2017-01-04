@@ -76,19 +76,33 @@ class ActionsViewSet(viewsets.GenericViewSet):
             ],
           },
         }
-        u = UserSocialAuth.objects.get(uid='robrocker7@gmail.com',
-                                       provider='google-oauth2')
-        credentials = AccessTokenCredentials(u.extra_data['access_token'],
-            'JohnsonCastillo/1.0')
-        http = httplib2.Http()
-        http = credentials.authorize(http)
+        try:
+            u = UserSocialAuth.objects.get(uid='robrocker7@gmail.com',
+                                           provider='google-oauth2')
+            credentials = AccessTokenCredentials(u.extra_data['access_token'],
+                'JohnsonCastillo/1.0')
+            http = httplib2.Http()
+            http = credentials.authorize(http)
 
-        resp, content = http.request(
-            'https://www.googleapis.com/calendar/v3/calendars/mmdelascu@gmail.com/events',
-            method='POST',
-            body=json.dumps(event),
-            headers={'Content-Type':'application/json'})
-        response = {'speech':r, "displayText":r}
+            resp, content = http.request(
+                'https://www.googleapis.com/calendar/v3/calendars/mmdelascu@gmail.com/events',
+                method='POST',
+                body=json.dumps(event),
+                headers={'Content-Type':'application/json'})
+            response = {'speech':r, "displayText":r}
+        except Exception as e:
+            response = {
+                "speech": "It seems that my permission to access your calendar has expired.",
+                'displayText': 'Please visit http://home.ghoknhar.com/social/login/google-oauth2/',
+                "contextOut": [{
+                    "name": "CASTILLO_OAUTH_ERROR",
+                    "lifespan": 0,
+                    "parameters": {
+                        "url": 'http://home.ghoknhar.com/social/login/google-oauth2/'
+                    }
+                }]
+            }
+
 
         ActionLog.objects.create(transaction_id=result.id,
                                  session_id=result.sessionId,
