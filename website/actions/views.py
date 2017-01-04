@@ -1,6 +1,7 @@
 import json
 from hashlib import sha1
 import httplib2
+from dateutil import parser
 
 from django.template.loader import get_template
 from django.contrib.auth.decorators import login_required
@@ -18,7 +19,7 @@ from oauth2client.client import AccessTokenCredentials
 from social_django.models import UserSocialAuth
 
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
-
+from .models import ActionLog
 
 @decorators.oauth_enabled(scopes=['https://www.googleapis.com/auth/calendar',])
 def auth_start(request):
@@ -50,6 +51,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
             return Response({
                 'success': True
             })
+
 
 
         params = request.data['result']['parameters']
@@ -86,4 +88,12 @@ class ActionsViewSet(viewsets.GenericViewSet):
             method='POST',
             body=json.dumps(event),
             headers={'Content-Type':'application/json'})
-        return Response({'speech':r, "displayText":r})
+        response = {'speech':r, "displayText":r}
+
+        ActionLog.objects.create(transaction_id=result.id,
+                                 session_id=result.sessionId,
+                                 date_created=parser.parse(result.timestamp),
+                                 status_code=result.status.code,
+                                 fulfillment_payload=json.dumps(response),
+                                 action_payload=json.dumps(request.data))
+        return Response(response)
