@@ -44,3 +44,15 @@ class GoogleActionRequestSerializer(serializers.Serializer):
     status = GoogleActionStatusSerializer()
     sessionId = serializers.UUIDField()
     result = GoogleActionResultSerializer()
+
+
+class GoogleCalendar(serializers.Serializer):
+    """ 
+    Google Calendar Resource
+    Schema: https://developers.google.com/google-apps/calendar/v3/reference/calendarList#resource
+
+    TODO: Add all attributes instead of just what I want
+    """
+    id = serializers.CharField()
+    summary = serializers.CharField()
+    accessRole = serializers.CharField()
