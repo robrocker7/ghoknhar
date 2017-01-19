@@ -12,7 +12,7 @@ class ActionLog(models.Model):
 
 
 class ActionDatastore(models.Model):
-	user = models.ForiegnKey(User)
+	user = models.ForeignKey(User)
 	key = models.CharField(max_length=256)
 	value = models.TextField()
 	value_type = models.CharField(max_length=12)
