@@ -18,6 +18,7 @@ from rest_framework.decorators import list_route, detail_route
 from oauth2client.contrib.django_util import decorators
 
 from social_django.utils import psa
+from social_django.models import UserSocialAuth
 
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
 from .models import ActionLog
@@ -38,6 +39,17 @@ def auth_start(request):
         return HttpResponse(
             'Here is an OAuth Authorize link:<a href="{}">Authorize</a>'
             .format(request.oauth.get_authorize_redirect()))
+
+@csrf_exempt
+def complete_google_action_access(request, backend):
+    user = UserSocialAuth.get_social_auth(backend, request.POST.get('code'))
+    if user:
+        login(request, user)
+        url = '{0}?state={1}&code={2}'.format(request.POST.get('redirect_uri'),
+                                              request.POST.get('state'),
+                                              request.POST.get('code'))
+        return HttpResponseRedirect(url)
+    return HttpResponse('Failed')
 
 
 @psa('social:complete')
