@@ -44,12 +44,12 @@ def auth_start(request):
 @psa('social:complete')
 @csrf_exempt
 def complete_google_action_access(request, backend):
-    user = request.backend.auth_complete_code(request.POST.get('code'))
+    social = request.backend.auth_complete_code(request.POST.get('code'))
     session_state = request.backend.strategy.session_get('state')
     if user:
-        _do_login(request.backend, user.user, user)
+        _do_login(request.backend, social.user, social)
         url = '{0}?state={1}&code={2}'.format(request.POST.get('redirect_uri'),
-                                              session_state,
+                                              social.extra_data['state'],
                                               request.POST.get('code'))
         return HttpResponseRedirect(url)
     return HttpResponse('Failed')

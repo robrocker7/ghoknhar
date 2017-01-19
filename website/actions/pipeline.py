@@ -16,13 +16,10 @@ def google_action_redirect(backend, response, social, *args, **kwargs):
     
     if backend.name == 'google-plus-action' and social:
         auth_code = data.get('code')
-        social.uid = auth_code
-        social.save()
         state = data.get('state')
+        social.uid = auth_code
+        social.extra_data['state'] = state
+        social.save()
+        
         google_home_redirect = '{0}?code={1}&state={2}'.format(session_redirect, auth_code, session_state)
-        print state
-        print '-'
-        print session_state
-        print '-'
-        print google_home_redirect
         return redirect(google_home_redirect)
