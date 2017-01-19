@@ -2,10 +2,11 @@ import logging
 import httplib2
 import json
 
+from social_django.models import UserSocialAuth
 from oauth2client.client import AccessTokenCredentials, AccessTokenCredentialsError
 
 from .serializers import GoogleCalendar
-
+from .models import ActionDatastore
 
 class GWrapper(object):
     HTTP = None
@@ -23,6 +24,12 @@ class GWrapper(object):
             logging.stacktrace(e)
             return None
         return cls(http, credentials)
+
+    @classmethod
+    def new_from_user(cls, user):
+        u = UserSocialAuth.objects.get(user=request.user,
+                                         provider='google-oauth2')
+        return cls.new_from_access_token(u.extra_data['access_token'])
 
     @staticmethod
     def validate_response(resp):
@@ -49,6 +56,8 @@ class GWrapper(object):
                 url, method='POST', body=json.dumps(body),
                 headers={'Content-Type':'application/json'})
         raise NotImplemented('Only GET and POST are implemeted.')
+
+    def datastore_get(self, key):
 
 
     def calendar_fetch_all(self):

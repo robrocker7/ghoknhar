@@ -15,8 +15,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import list_route, detail_route
 from oauth2client.contrib.django_util import decorators
-from oauth2client.client import AccessTokenCredentials
-from social_django.models import UserSocialAuth
+
 from social_django.utils import psa
 
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
@@ -58,6 +57,28 @@ class ActionsViewSet(viewsets.GenericViewSet):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
+    def _get_signed_gwrapper(self, request):
+        if not request.is_authenticated():
+            return None
+
+        try:
+            gwrap = GWrapper.new_from_user(request.user)
+            return grwrap
+        except Exception as e:
+            return None
+
+    def authorization_required():
+        return Response({
+                    "speech": "It seems that my permission to access your calendar has expired.",
+                    'displayText': 'Please visit http://home.ghoknhar.com/social/login/google-oauth2/',
+                    "contextOut": [{
+                        "name": "CASTILLO_OAUTH_ERROR",
+                        "lifespan": 0,
+                        "parameters": {
+                            "url": 'http://home.ghoknhar.com/social/login/google-oauth2/'
+                        }
+                    }]
+                })
 
     @list_route(methods=['POST'])
     def actions(self, request):
@@ -75,6 +96,10 @@ class ActionsViewSet(viewsets.GenericViewSet):
                     'displayText': 'Castillo did not understand the requested action. Action was {0}'.format(action)}
 
         if action == 'castillo.add_calendar':
+            signed_gwrap = self._get_signed_gwrapper(request)
+            if signed_gwrap is None:
+                return self.authorization_required()
+
             params = request.data['result']['parameters']
             date = params.get('date-time', params.get('date'))
             r = "Ok; I will add {0} to your Work Schedule.".format(date)
@@ -97,30 +122,15 @@ class ActionsViewSet(viewsets.GenericViewSet):
                     ],
                 },
             }
-            try:
-                u = UserSocialAuth.objects.get(uid='robrocker7@gmail.com',
-                                             provider='google-oauth2')
-                credentials = AccessTokenCredentials(u.extra_data['access_token'],
-                  'JohnsonCastillo/1.0')
-                gwrap = GWrapper.new_from_access_token(u.extra_data['access_token'])
-                success, reason = gwrap.calendar_add_event('mmdelascu@gmail.com', event)
-                if success:
-                    response = {'speech':r, "displayText":r}
-                else:
-                    response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
+            success, reason = gwrap.calendar_add_event('mmdelascu@gmail.com', event)
+            if success:
+                response = {'speech':r, "displayText":r}
+            else:
+                response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
                                 'displayText': reason}
-            except Exception as e:
-                response = {
-                    "speech": "It seems that my permission to access your calendar has expired.",
-                    'displayText': 'Please visit http://home.ghoknhar.com/social/login/google-oauth2/',
-                    "contextOut": [{
-                        "name": "CASTILLO_OAUTH_ERROR",
-                        "lifespan": 0,
-                        "parameters": {
-                            "url": 'http://home.ghoknhar.com/social/login/google-oauth2/'
-                        }
-                    }]
-                }
+            
+                
+            
 
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],
