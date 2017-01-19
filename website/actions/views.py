@@ -46,7 +46,7 @@ def auth_start(request):
 def complete_google_action_access(request, backend):
     social = request.backend.auth_complete_code(request.POST.get('code'))
     session_state = request.backend.strategy.session_get('state')
-    if user:
+    if social:
         _do_login(request.backend, social.user, social)
         url = '{0}?state={1}&code={2}'.format(request.POST.get('redirect_uri'),
                                               social.extra_data['state'],
