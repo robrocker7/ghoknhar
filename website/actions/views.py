@@ -46,23 +46,8 @@ def register_by_access_token(request, backend):
     # This view expects an access_token GET parameter, if it's needed,
     # request.backend and request.strategy will be loaded with the current
     # backend and strategy.
-    token = request.GET.get('access_token')
-    data = {
-            'grant_type': 'authorization_code',  # request auth code
-            'code': request.POST.get('code', ''),  # server response code
-            'client_id': request.POST.get('client_id'),
-            'client_secret': request.POST.get('client_secret'),
-            'redirect_uri': request.POST.get('redirect_uri')
-    }
-    print data
-    response = request.backend.request_access_token(
-                request.backend.ACCESS_TOKEN_URL,
-                data=data,
-                headers=request.backend.auth_headers(),
-                method=request.backend.ACCESS_TOKEN_METHOD
-            )
+    user = request.backend.auth_complete_code(request.POST.get('code'))
 
-    user = request.backend.do_auth(response['access_token'], response=response)
     if user:
         login(request, user)
         return 'OK'

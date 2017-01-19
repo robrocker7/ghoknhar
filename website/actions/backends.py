@@ -1,4 +1,5 @@
 from social_core.backends.google import GooglePlusAuth
+from social_django.models import UserSocialAuth
 
 
 class GooglePlusActionAuth(GooglePlusAuth):
@@ -7,3 +8,6 @@ class GooglePlusActionAuth(GooglePlusAuth):
         'https://www.googleapis.com/auth/plus.login',
         'https://www.googleapis.com/auth/plus.me'
     ]
+
+    def auth_complete_code(self, code):
+        return UserSocialAuth.get_social_auth(self.name, code)
