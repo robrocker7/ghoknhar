@@ -45,10 +45,11 @@ def auth_start(request):
 @csrf_exempt
 def complete_google_action_access(request, backend):
     user = request.backend.auth_complete_code(request.POST.get('code'))
+    session_state = request.backend.strategy.session_get('state')
     if user:
         _do_login(request.backend, user.user, user)
         url = '{0}?state={1}&code={2}'.format(request.POST.get('redirect_uri'),
-                                              request.POST.get('state'),
+                                              session_state,
                                               request.POST.get('code'))
         return HttpResponseRedirect(url)
     return HttpResponse('Failed')
