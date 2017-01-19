@@ -1,4 +1,4 @@
-from social_core.backends import GooglePlusAuth
+from social_core.backends.google import GooglePlusAuth
 
 
 class GooglePlusActionAuth(GooglePlusAuth):
