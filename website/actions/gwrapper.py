@@ -58,7 +58,7 @@ class GWrapper(object):
         raise NotImplemented('Only GET and POST are implemeted.')
 
     def datastore_get(self, key):
-
+        pass
 
     def calendar_fetch_all(self):
         resp, content = self._request('/calendar/v3/users/me/calendarList', method='GET')
