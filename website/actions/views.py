@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.contrib.auth import login
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import status, viewsets
 from rest_framework.authentication import TokenAuthentication
@@ -40,6 +41,7 @@ def auth_start(request):
 
 
 @psa('social:complete')
+@csrf_exempt
 def register_by_access_token(request, backend):
     # This view expects an access_token GET parameter, if it's needed,
     # request.backend and request.strategy will be loaded with the current
