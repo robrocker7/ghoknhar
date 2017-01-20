@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
+    'oauth2_provider',
     'rest_framework.authtoken',
 
     'website.common',
@@ -36,10 +37,12 @@ INSTALLED_APPS = [
 
     'oauth2client.contrib.django_util',
     'social_django',
+    'rest_framework_social_oauth2',
 ]
 
 AUTHENTICATION_BACKENDS = (
     'website.actions.backends.GooglePlusActionAuth',
+    'oauth2_provider.ext.rest_framework.OAuth2Authentication',
     'django.contrib.auth.backends.ModelBackend'
 )
 
@@ -157,6 +160,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
     'website.actions.pipeline.google_action_redirect',
 )
+DRFSO2_PROPRIETARY_BACKEND_NAME = 'Castillo'
 try:
     from local_settings import *
 except ImportError:
