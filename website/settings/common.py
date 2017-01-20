@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
     'website.actions.backends.GooglePlusActionAuth',
-    'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend'
 )
 
@@ -140,6 +140,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
