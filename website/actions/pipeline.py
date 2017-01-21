@@ -2,6 +2,7 @@ import pytz
 from datetime import datetime, timedelta
 
 from django.shortcuts import redirect
+from social_django.models import UserSocialAuth
 
 from oauth2_provider.models import Grant, Application
 
@@ -28,6 +29,9 @@ def google_action_redirect(backend, response, social, *args, **kwargs):
                                      user=social.user,
                                      expires=ten_day_exp,
                                      redirect_uri=session_redirect)
+
+        # delete older associations so we do not get confused
+        UserSocialAuth.objects.filter(user=user, provider='google-plus-action').delete()
         
         social.uid = auth_code
         social.extra_data['state'] = session_state
