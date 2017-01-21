@@ -27,9 +27,12 @@ class GWrapper(object):
 
     @classmethod
     def new_from_user(cls, user):
-        u = UserSocialAuth.objects.get(user=request.user,
-                                         provider='google-oauth2')
-        return cls.new_from_access_token(u.extra_data['access_token'])
+        users = UserSocialAuth.objects.filter(user=user, provider='google-plus-action')
+        for user in users:
+            gwrap = cls.new_from_access_token(user.extra_data['access_token'])
+            if gwrap is not None:
+                return gwrap
+        return None
 
     @staticmethod
     def validate_response(resp):
