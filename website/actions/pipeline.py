@@ -1,5 +1,9 @@
+import pytz
+from datetime import datetime, timedelta
+
 from django.shortcuts import redirect
 
+from oauth2_provider.models import Grant, Application
 
 def redirect_if_no_refresh_token(backend, response, social, *args, **kwargs):
 
@@ -16,6 +20,15 @@ def google_action_redirect(backend, response, social, *args, **kwargs):
     
     if backend.name == 'google-plus-action' and social:
         auth_code = data.get('code')
+        # create a Grant from the oauth toolkit lib
+        ten_day_exp = datetime.now(pytz.utc) + timedetla(days=10)
+        app = Application.objects.get(name='GoogleActionsAPI')
+        grant = Grant.objects.create(code=auth_code,
+                                     application=app,
+                                     user=social.user,
+                                     expires=ten_day_exp,
+                                     redirect_uri=session_redirect)
+        
         social.uid = auth_code
         social.extra_data['state'] = session_state
         social.save()
