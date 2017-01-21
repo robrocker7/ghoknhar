@@ -21,8 +21,8 @@ def google_action_redirect(backend, response, social, *args, **kwargs):
     if backend.name == 'google-plus-action' and social:
         auth_code = data.get('code')
         # create a Grant from the oauth toolkit lib
-        ten_day_exp = datetime.now(pytz.utc) + timedetla(days=10)
-        app = Application.objects.get(name='GoogleActionsAPI')
+        ten_day_exp = datetime.now(pytz.utc) + timedelta(days=10)
+        app = Application.objects.get(name='GoogleActionsAPI')  #hardcoded to googleplus
         grant = Grant.objects.create(code=auth_code,
                                      application=app,
                                      user=social.user,

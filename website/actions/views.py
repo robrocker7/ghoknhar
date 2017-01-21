@@ -41,33 +41,6 @@ def auth_start(request):
             'Here is an OAuth Authorize link:<a href="{}">Authorize</a>'
             .format(request.oauth.get_authorize_redirect()))
 
-@psa('social:complete')
-@csrf_exempt
-def complete_google_action_access(request, backend):
-    social = request.backend.auth_complete_code(request.POST.get('code'))
-    session_state = request.backend.strategy.session_get('state')
-    if social:
-        _do_login(request.backend, social.user, social)
-        url = '{0}?state={1}&code={2}'.format(request.POST.get('redirect_uri'),
-                                              social.extra_data['state'],
-                                              request.POST.get('code'))
-        return HttpResponseRedirect(url)
-    return HttpResponse('Failed')
-
-
-@psa('social:complete')
-@csrf_exempt
-def register_by_access_token(request, backend):
-    # This view expects an access_token GET parameter, if it's needed,
-    # request.backend and request.strategy will be loaded with the current
-    # backend and strategy.
-    user = request.backend.auth_complete_code(request.POST.get('code'))
-
-    if user:
-        login(request, user)
-        return 'OK'
-    else:
-        return 'ERROR'
 
 class ActionsViewSet(viewsets.GenericViewSet):
     serializer_class = GoogleActionResponseSerializer
@@ -75,6 +48,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
     permission_classes = (IsAuthenticated,)
 
     def _get_signed_gwrapper(self, request):
+        print request.user
         if not request.is_authenticated():
             return None
 
@@ -107,16 +81,18 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 'success': True
             })
 
+
+
         action = request.data['result']['action']
         # default response
         response = {'speech': 'I do not seem capable of handling this request.',
                     'displayText': 'Castillo did not understand the requested action. Action was {0}'.format(action)}
 
         if action == 'castillo.add_calendar':
-            signed_gwrap = self._get_signed_gwrapper(request)
-            if signed_gwrap is None:
-                return self.authorization_required()
-
+            # signed_gwrap = self._get_signed_gwrapper(request)
+            # if signed_gwrap is None:
+            #     return self.authorization_required()
+            gwrap = GWrapper.new_from_user(request.user)
             params = request.data['result']['parameters']
             date = params.get('date-time', params.get('date'))
             r = "Ok; I will add {0} to your Work Schedule.".format(date)
