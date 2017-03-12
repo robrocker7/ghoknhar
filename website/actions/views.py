@@ -103,88 +103,56 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 r['data'] = data
             return Response(r)
 
-        if action in ['castillo.add_work_day_to_default_calendar',
-                      'castillo.add_work_day_to_specific_calendar']:
-            # signed_gwrap = self._get_signed_gwrapper(request)
-            # if signed_gwrap is None:
-            #     return self.authorization_required()
+        if action in ['castillo.add_work_day_to_default_calendar',]:
             gwrap = GWrapper.new_from_user(request.user)
             params = request.data['result']['parameters']
             date = params.get('date-time', params.get('date'))
+            category = params.get('event_category')
 
             calendar_name = None
-            if action == 'castillo.add_work_day_to_default_calendar':
-                calendar_id = request.user.email
-            else:
-                try:
-                    cached_id = ActionDatastore.objects.get(user=request.user,
-                        key='{0}:calendar_default_id'.format(action))
-                    calendar_id = cached_id.value
-                except ActionDatastore.DoesNotExist:
-                    calendar_id = None
+            calendar_id = request.user.email
 
-                # fetch calendars and ask for a choice
-                if calendar_id is None:
-                    success, resp = gwrap.calendar_fetch_all()
-                    if success:
-                        # save available calendars to action store
-                        calendarstore = ActionDatastore.objects.update_or_create(
-                            user=request.user,
-                            key='calendar_available_ids',
-                            defaults={
-                                'value': json.dumps(resp),
-                                'value_type': 'json'
-                            })
-                        if len(resp) == 1:
-                            store_id = ActionDatastore.objects.update_or_create(
-                                user=request.user,
-                                key='calendar_default_id',
-                                defaults={
-                                    'value': resp[0]['id'],
-                                    'value_type': 'str',
-                                })
-                        
-                        return send_response(
-                            '<speak>I could not find your {0} calendar.</speak>'.format(calendar_name),
-                            'Please select a calendar.',
-                            data={
-                                'google': {
-                                    'expect_user_response': True,
-                                    'is_ssml': True,
+            try:
+                event = ActionDatastore.objects.get(user=request.user,
+                    key='{0}:event'.format(category))
+            except ActionDatastore.DoesNotExist:
+                return send_response('<speak>I could not find a calendar event for {0}. Please create one.</speak>'.format(category),
+                    'Could not find event in Castillo.',
+                    data={
+                        'google': {
+                            'expect_user_response': False,
+                            'is_ssml': True,
+                        }
+                    })
 
-                                }
-                            })
 
-            r = "Ok; I will add {0} to your Work Schedule.".format(date)
-            event = {
-                'summary': 'Work',
-                'location': '11113 Research Blvd, Austin Tx, 78759',
-                'description': 'Melisa works for 12 hours',
-                'start': {
-                    'dateTime': '{0}T06:45:00-06:00'.format(date),
-                    'timeZone': 'America/Chicago',
-                },
-                'end': {
-                    'dateTime': '{0}T19:15:00-06:00'.format(date),
-                    'timeZone': 'America/Chicago',
-                },
-                'reminders': {
-                    'useDefault': False,
-                    'overrides': [
-                        {'method': 'popup', 'minutes': 20},
-                    ],
-                },
-            }
-            success, reason = gwrap.calendar_add_event('mmdelascu@gmail.com', event)
+            r = "Ok; I will add {0} to your {1} Schedule.".format(date, category)
+            # event = {
+            #     'summary': 'Work',
+            #     'location': '11113 Research Blvd, Austin Tx, 78759',
+            #     'description': 'Melisa works for 12 hours',
+            #     'start': {
+            #         'dateTime': '{0}T06:45:00-06:00'.format(date),
+            #         'timeZone': 'America/Chicago',
+            #     },
+            #     'end': {
+            #         'dateTime': '{0}T19:15:00-06:00'.format(date),
+            #         'timeZone': 'America/Chicago',
+            #     },
+            #     'reminders': {
+            #         'useDefault': False,
+            #         'overrides': [
+            #             {'method': 'popup', 'minutes': 20},
+            #         ],
+            #     },
+            # }
+            success, reason = gwrap.calendar_add_event(calendar_id, event.get_value())
             if success:
                 response = {'speech':r, "displayText":r}
             else:
                 response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
                                 'displayText': reason}
             
-                
-            
-
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],
                                  session_id=result_data['sessionId'],

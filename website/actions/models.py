@@ -13,11 +13,11 @@ class ActionLog(models.Model):
     action_payload = models.TextField()
 
 
-class ActionDatastore(models.Model):om
-	user = models.ForeignKey(User)
-	key = models.CharField(max_length=256, db_index=True)
-	value = models.TextField()
-	value_type = models.CharField(max_length=12)
+class ActionDatastore(models.Model):
+    user = models.ForeignKey(User)
+    key = models.CharField(max_length=256, db_index=True)
+    value = models.TextField()
+    value_type = models.CharField(max_length=12)
 
     def get_value(self):
         if value_type == 'json':
