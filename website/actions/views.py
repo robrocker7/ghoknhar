@@ -22,7 +22,7 @@ from social_django.models import UserSocialAuth
 from social_django.views import _do_login
 
 from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
-from .models import ActionLog
+from .models import ActionLog, ActionDatastore
 from .gwrapper import GWrapper
 
 
@@ -71,6 +71,15 @@ class ActionsViewSet(viewsets.GenericViewSet):
                     }]
                 })
 
+    @list_route(methods=['GET'])
+    def self(self, request):
+        user = None
+        if request.user:
+            user = request.user.email
+        return Response({
+                'user': user
+            })
+
     @list_route(methods=['POST'])
     def actions(self, request):
         try:
@@ -88,24 +97,75 @@ class ActionsViewSet(viewsets.GenericViewSet):
         response = {'speech': 'I do not seem capable of handling this request.',
                     'displayText': 'Castillo did not understand the requested action. Action was {0}'.format(action)}
 
-        if action == 'castillo.add_calendar':
+        def send_response(speech, displayText, data=None):
+            r = {'speech':speech, "displayText":displayText}
+            if data is not None:
+                r['data'] = data
+            return Response(r)
+
+        if action in ['castillo.add_work_day_to_default_calendar',
+                      'castillo.add_work_day_to_specific_calendar']:
             # signed_gwrap = self._get_signed_gwrapper(request)
             # if signed_gwrap is None:
             #     return self.authorization_required()
             gwrap = GWrapper.new_from_user(request.user)
             params = request.data['result']['parameters']
             date = params.get('date-time', params.get('date'))
+
+            calendar_name = None
+            if action == 'castillo.add_work_day_to_default_calendar':
+                calendar_id = request.user.email
+            else:
+                try:
+                    cached_id = ActionDatastore.objects.get(user=request.user,
+                        key='{0}:calendar_default_id'.format(action))
+                    calendar_id = cached_id.value
+                except ActionDatastore.DoesNotExist:
+                    calendar_id = None
+
+                # fetch calendars and ask for a choice
+                if calendar_id is None:
+                    success, resp = gwrap.calendar_fetch_all()
+                    if success:
+                        # save available calendars to action store
+                        calendarstore = ActionDatastore.objects.update_or_create(
+                            user=request.user,
+                            key='calendar_available_ids',
+                            defaults={
+                                'value': json.dumps(resp),
+                                'value_type': 'json'
+                            })
+                        if len(resp) == 1:
+                            store_id = ActionDatastore.objects.update_or_create(
+                                user=request.user,
+                                key='calendar_default_id',
+                                defaults={
+                                    'value': resp[0]['id'],
+                                    'value_type': 'str',
+                                })
+                        
+                        return send_response(
+                            '<speak>I could not find your {0} calendar.</speak>'.format(calendar_name),
+                            'Please select a calendar.',
+                            data={
+                                'google': {
+                                    'expect_user_response': True,
+                                    'is_ssml': True,
+
+                                }
+                            })
+
             r = "Ok; I will add {0} to your Work Schedule.".format(date)
             event = {
                 'summary': 'Work',
                 'location': '11113 Research Blvd, Austin Tx, 78759',
                 'description': 'Melisa works for 12 hours',
                 'start': {
-                    'dateTime': '{0}T06:45:00'.format(date),
+                    'dateTime': '{0}T06:45:00-06:00'.format(date),
                     'timeZone': 'America/Chicago',
                 },
                 'end': {
-                    'dateTime': '{0}T19:15:00'.format(date),
+                    'dateTime': '{0}T19:15:00-06:00'.format(date),
                     'timeZone': 'America/Chicago',
                 },
                 'reminders': {
@@ -132,4 +192,4 @@ class ActionsViewSet(viewsets.GenericViewSet):
                                  status_code=result_data['status']['code'],
                                  fulfillment_payload=json.dumps(response),
                                  action_payload=json.dumps(request.data))
-        return Response(response)
+        return send_response(response['speech'], response['displayText'])

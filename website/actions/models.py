@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -11,8 +13,15 @@ class ActionLog(models.Model):
     action_payload = models.TextField()
 
 
-class ActionDatastore(models.Model):
+class ActionDatastore(models.Model):om
 	user = models.ForeignKey(User)
-	key = models.CharField(max_length=256)
+	key = models.CharField(max_length=256, db_index=True)
 	value = models.TextField()
 	value_type = models.CharField(max_length=12)
+
+    def get_value(self):
+        if value_type == 'json':
+            return json.loads(self.value)
+        elif value_type == 'str':
+            return str(self.value)
+        return value
