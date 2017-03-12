@@ -79,7 +79,7 @@ class GWrapper(object):
 
     def calendar_add_event(self, calendar_id, event):
         resp, content = self._request('/calendar/v3/calendars/{0}/events'.format(calendar_id),
-            method='POST', body=json.dumps(event))
+            method='POST', body=event)
 
         if not GWrapper.validate_response(resp):
             return GWrapper.error_response(resp)

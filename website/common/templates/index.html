@@ -60,7 +60,7 @@
 
         // Note that the path doesn't matter right now; any WebSocket
         // connection gets bumped over to WebSocket consumers
-        socket = new WebSocket("ws://" + window.location.host + "/zwave/");
+        socket = new WebSocket((window.location.protocol == 'http') ? 'ws://' : 'wss://' + window.location.host + "/zwave/");
         socket.onmessage = function(e) {
             var data = JSON.parse(e.data);
             $('.ghok-switch').trigger('updateSwitch', [data.id, data.active]);
