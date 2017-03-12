@@ -2,6 +2,7 @@ import json
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.template import Context, Template
 
 
 class ActionLog(models.Model):
@@ -27,6 +28,7 @@ class ActionDatastore(models.Model):
         return self.value
 
     def populate_tokens(self, params):
-        _s = self.value
-        self.value = _s
+        t = Template(self.value)
+        c = Context(params)
+        self.value = t.render(c)
         return self.get_value()
