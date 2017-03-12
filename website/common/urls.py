@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from . import views
 urlpatterns = [
     url(r'^tos/$', TemplateView.as_view(template_name='tos.html')),
+    url(r'^privacy-policy/$', TemplateView.as_view(template_name='privacy_policy.html')),
     url(r'^$', views.home, name='home'),
 ]
 
