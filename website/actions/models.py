@@ -20,11 +20,11 @@ class ActionDatastore(models.Model):
     value_type = models.CharField(max_length=12)
 
     def get_value(self):
-        if value_type == 'json':
+        if self.value_type == 'json':
             return json.loads(self.value)
-        elif value_type == 'str':
+        elif self.value_type == 'str':
             return str(self.value)
-        return value
+        return self.value
 
     def populate_tokens(self, params):
         _s = self.get_value()
