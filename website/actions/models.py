@@ -27,5 +27,6 @@ class ActionDatastore(models.Model):
         return self.value
 
     def populate_tokens(self, params):
-        _s = self.get_value()
-        return _s.format(**params)
+        _s = self.value
+        self.value = _s
+        return self.get_value()
