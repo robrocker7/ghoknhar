@@ -1,9 +1,11 @@
 from django.conf.urls import url, include
+from django.views.generic import TemplateView
 # from agentcms.settings import DEBUG, STATIC_ROOT, MEDIA_ROOT
 # from rest_framework.urlpatterns import format_suffix_patterns
 
 from . import views
 urlpatterns = [
+    url(r'^tos/$', TemplateView.as_view(template_name='tos.html')),
     url(r'^$', views.home, name='home'),
 ]
 
