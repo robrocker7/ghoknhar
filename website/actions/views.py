@@ -109,9 +109,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
             date = params.get('date-time', params.get('date'))
             category = params.get('event_category')
 
-            calendar_name = None
             calendar_id = request.user.email
-
             try:
                 event = ActionDatastore.objects.get(user=request.user,
                     key='{0}:event'.format(category))
@@ -125,33 +123,15 @@ class ActionsViewSet(viewsets.GenericViewSet):
                         }
                     })
 
-
+            event_payload = event.populate_tokens(params)
             r = "Ok; I will add {0} to your {1} Schedule.".format(date, category)
-            # event = {
-            #     'summary': 'Work',
-            #     'location': '11113 Research Blvd, Austin Tx, 78759',
-            #     'description': 'Melisa works for 12 hours',
-            #     'start': {
-            #         'dateTime': '{0}T06:45:00-06:00'.format(date),
-            #         'timeZone': 'America/Chicago',
-            #     },
-            #     'end': {
-            #         'dateTime': '{0}T19:15:00-06:00'.format(date),
-            #         'timeZone': 'America/Chicago',
-            #     },
-            #     'reminders': {
-            #         'useDefault': False,
-            #         'overrides': [
-            #             {'method': 'popup', 'minutes': 20},
-            #         ],
-            #     },
-            # }
-            success, reason = gwrap.calendar_add_event(calendar_id, event.get_value())
+            success, reason = gwrap.calendar_add_event(calendar_id, event_payload)
             if success:
                 response = {'speech':r, "displayText":r}
             else:
                 response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
                                 'displayText': reason}
+            response['payload'] = event_payload
             
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],

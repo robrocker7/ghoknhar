@@ -25,3 +25,7 @@ class ActionDatastore(models.Model):
         elif value_type == 'str':
             return str(self.value)
         return value
+
+    def populate_tokens(self, params):
+        _s = self.get_value()
+        return _s.format(**params)
