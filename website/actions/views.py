@@ -144,7 +144,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
             address = params.get('address')
             
             start_dt = parser.parse('{0}T{1}'.format(date_start, time_start))
-            end_dt = parser.parse()
+            end_dt = parser.parse('{0}T{1}'.format(date_end, time_end))
 
             gevent = GoogleEvent({
                 'end':end_dt.isoformat(),
@@ -153,7 +153,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 'location': address,
                 'description': 'Event created by Castillo.'
             })
-            success, reason = gwrap.calendar_add_event(request.user.email, gevent.json)
+            success, reason = gwrap.calendar_add_event(request.user.email, gevent.data)
             if success:
                 response = {'speech':r, "displayText":r}
             else:

@@ -66,9 +66,9 @@ class GoogleEvent(serializers.Serializer):
     location = serializers.CharField()
 
     @property
-    def json(self):
+    def data(self):
         _d = self.data
-        return json.dumps({  
+        return {  
             "end":{  
                 "timeZone":"America/Chicago",
                 "dateTime":"{0}".format(_d['end']),
@@ -87,4 +87,4 @@ class GoogleEvent(serializers.Serializer):
                 "dateTime":"{0}".format(_d['start'])
             },
             "location":_d['location']
-        })
+        }
