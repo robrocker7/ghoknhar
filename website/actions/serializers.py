@@ -67,7 +67,7 @@ class GoogleEvent(serializers.Serializer):
 
     @property
     def data(self):
-        _d = self.data
+        _d = super(GoogleEvent, self).data
         return {  
             "end":{  
                 "timeZone":"America/Chicago",

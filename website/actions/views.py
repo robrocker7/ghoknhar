@@ -155,10 +155,15 @@ class ActionsViewSet(viewsets.GenericViewSet):
             })
             success, reason = gwrap.calendar_add_event(request.user.email, gevent.data)
             if success:
-                response = {'speech':r, "displayText":r}
+                response = {
+                    'speech':'<speak>I have created your event.</speak>',
+                    "displayText":'You may check your Google calendar.'
+                }
             else:
-                response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
-                                'displayText': reason}
+                response = {
+                    'speech': "I failed to save your calendar event. Please review your device more additional details.",
+                    'displayText': reason
+                }
             response['payload'] = gevent.json
             
         result_data = result.data
