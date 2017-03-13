@@ -56,3 +56,35 @@ class GoogleCalendar(serializers.Serializer):
     id = serializers.CharField()
     summary = serializers.CharField()
     accessRole = serializers.CharField()
+
+
+class GoogleEvent(serializers.Serializer):
+    end = serializers.CharField()
+    description = serializers.CharField()
+    summary = serializers.CharField()
+    start = serializers.CharField()
+    location = serializers.CharField()
+
+    @property
+    def json(self):
+        _d = self.data
+        return json.dumps({  
+            "end":{  
+                "timeZone":"America/Chicago",
+                "dateTime":"{0}".format(_d['end']),
+            },
+            "description":_d['description'],
+            "reminders":{  
+                "overrides":[{  
+                    "minutes":20,
+                    "method":"popup"
+                }],
+                "useDefault":False
+            },
+            "summary":_d['summary'],
+            "start":{  
+                "timeZone":"America/Chicago",
+                "dateTime":"{0}".format(_d['start'])
+            },
+            "location":_d['location']
+        })

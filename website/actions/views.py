@@ -21,7 +21,7 @@ from social_django.utils import psa
 from social_django.models import UserSocialAuth
 from social_django.views import _do_login
 
-from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer
+from .serializers import GoogleActionResponseSerializer, GoogleActionRequestSerializer, GoogleEvent
 from .models import ActionLog, ActionDatastore
 from .gwrapper import GWrapper
 
@@ -132,6 +132,34 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
                                 'displayText': reason}
             response['payload'] = event_payload
+
+        elif action == 'castillo.create_event':
+            gwrap = GWrapper.new_from_user(request.user)
+            params = request.data['result']['parameters']
+            category = params.get('event_category')
+            date_start = params.get('date_start')
+            time_start = params.get('time_start')
+            date_end = params.get('date_end')
+            time_end = params.get('time_end')
+            address = params.get('address')
+            
+            start_dt = parser.parse('{0}T{1}'.format(date_start, time_start))
+            end_dt = parser.parse()
+
+            gevent = GoogleEvent({
+                'end':end_dt.isoformat(),
+                'start':start_dt.isoformat(),
+                'summary': 'Event: {0}'.format(category),
+                'location': address,
+                'description': 'Event created by Castillo.'
+            })
+            success, reason = gwrap.calendar_add_event(request.user.email, gevent.json)
+            if success:
+                response = {'speech':r, "displayText":r}
+            else:
+                response = {'speech': "I failed to save your calendar event. Please review your device more additional details.",
+                                'displayText': reason}
+            response['payload'] = gevent.json
             
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],

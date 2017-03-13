@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     url(r'^tos/$', TemplateView.as_view(template_name='tos.html')),
     url(r'^privacy-policy/$', TemplateView.as_view(template_name='privacy_policy.html')),
+    url(r'^accounts/profile/$', TemplateView.as_view(template_name='accounts/profile.html')),
     url(r'^$', views.home, name='home'),
 ]
 
