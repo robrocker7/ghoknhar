@@ -164,7 +164,7 @@ class ActionsViewSet(viewsets.GenericViewSet):
                     'speech': "I failed to save your calendar event. Please review your device more additional details.",
                     'displayText': reason
                 }
-            response['payload'] = gevent.json
+            response['payload'] = gevent.data
             
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],
