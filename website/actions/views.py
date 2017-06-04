@@ -103,8 +103,8 @@ class ActionsViewSet(viewsets.GenericViewSet):
                 r['data'] = data
             return Response(r)
 
+        gwrap = GWrapper.new_from_user(request.user)
         if action in ['castillo.add_work_day_to_default_calendar',]:
-            gwrap = GWrapper.new_from_user(request.user)
             params = request.data['result']['parameters']
             date = params.get('date-time', params.get('date'))
             category = params.get('event_category')
@@ -134,7 +134,6 @@ class ActionsViewSet(viewsets.GenericViewSet):
             response['payload'] = event_payload
 
         elif action == 'castillo.create_event':
-            gwrap = GWrapper.new_from_user(request.user)
             params = request.data['result']['parameters']
             category = params.get('event_category')
             date_start = params.get('date_start')
@@ -165,7 +164,22 @@ class ActionsViewSet(viewsets.GenericViewSet):
                     'displayText': reason
                 }
             response['payload'] = gevent.data
+        elif action == 'castillo.add_bill':
+            params = request.data['result']['parameters']
             
+            bill = {
+                'bill_name':  params.get('bill_name'),
+                'bill_amount':  params.get('bill_amount'),
+                'bill_interest':  params.get('bill_interest'),
+            }
+
+            try:
+                bill = ActionDatastore(user=request.user,
+                    key='{0}:bill'.format(bill_name))
+            except ActionDatastore.DoesNotExist:
+                # create a temporary cached object on the session
+                request.session['bill'] = ''
+
         result_data = result.data
         ActionLog.objects.create(transaction_id=result_data['id'],
                                  session_id=result_data['sessionId'],

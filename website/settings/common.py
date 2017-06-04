@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
     'website.actions.backends.GooglePlusActionAuth',
+    'website.common.backends.NestOAuth2',
     'rest_framework_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend'
 )
